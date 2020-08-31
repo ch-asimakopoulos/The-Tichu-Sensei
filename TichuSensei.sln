@@ -3,30 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29319.158
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Application", "TichuSensei.Application\TichuSensei.Application.csproj", "{362A3013-F384-4702-9A13-6F0E18D0A548}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Application.Tests", "TichuSensei.Application.Tests\TichuSensei.Application.Tests.csproj", "{9F33A34F-84F1-4729-9FFA-6CED91512C3E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Domain", "TichuSensei.Domain\TichuSensei.Domain.csproj", "{23593946-D11B-431E-ACC6-EFCF8DD6B206}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Domain.Tests", "TichuSensei.Domain.Tests\TichuSensei.Domain.Tests.csproj", "{7EC0AF7E-2FCD-4D6A-9ACD-991D1443CE74}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Identity", "TichuSensei.Infrastructure.Identity\TichuSensei.Infrastructure.Identity.csproj", "{76B6E4D7-26DB-4691-8101-49851A211043}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Identity.Tests", "TichuSensei.Infrastructure.Identity.Tests\TichuSensei.Infrastructure.Identity.Tests.csproj", "{747F3074-EFA9-4973-97CE-DE85A91F53E8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Persistence.Tests", "TichuSensei.Infrastructure.Persistence.Tests\TichuSensei.Infrastructure.Persistence.Tests.csproj", "{121E5DCC-2C31-45E3-9E52-C05F94EB50DB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Persistence", "TichuSensei.Infrastructure.Persistence\TichuSensei.Infrastructure.Persistence.csproj", "{602AB59B-BC4C-4EB9-A00D-74385195CC74}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared", "TichuSensei.Infrastructure.Shared\TichuSensei.Infrastructure.Shared.csproj", "{0281AA77-9884-48BA-B72D-76E329533021}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared.Tests", "TichuSensei.Infrastructure.Shared.Tests\TichuSensei.Infrastructure.Shared.Tests.csproj", "{C054B620-D823-437F-823F-DF9ADA6F37F0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi", "TichuSensei.WebApi\TichuSensei.WebApi.csproj", "{ACDC0723-4D1A-4018-8226-556D1F6F0A91}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", "TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{17746E9C-D56B-4534-9BCA-DE2F43A3ADDE}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D90CC2C8-1F6C-41CC-B2A9-8F52BF9A4241}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{358EF228-E349-4A23-BB41-722E24BD104C}"
