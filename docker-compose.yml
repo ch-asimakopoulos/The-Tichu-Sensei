@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  tichusensei.webapi:
+    image: ${DOCKER_REGISTRY-}tichusenseiwebapi
+    build:
+      context: .
+      dockerfile: src/TichuSensei.WebApi/Dockerfile
