@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".repodocs", ".repodocs", "{9A4BF39F-5CB7-41A2-B8C0-A42F9A4EAAD4}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
+		README.md = README.md
 		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
@@ -52,17 +53,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".dockerfiles", ".dockerfile
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared", "src\TichuSensei.Infrastructure\Shared\TichuSensei.Infrastructure.Shared.csproj", "{04E0D787-579A-49A2-B2D4-D1C51FFF2281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.Core.Application.Tests", "tests\TichuSensei.Core\Application\TichuSensei.Core.Application.Tests\TichuSensei.Core.Application.Tests.csproj", "{8AE9B4C2-17CC-4AE3-8CBB-C8A7EE90EB07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Application.Tests", "tests\TichuSensei.Core\Application\TichuSensei.Core.Application.Tests\TichuSensei.Core.Application.Tests.csproj", "{8AE9B4C2-17CC-4AE3-8CBB-C8A7EE90EB07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.Core.Domain.Tests", "tests\TichuSensei.Core\Domain\TichuSensei.Core.Domain.Tests\TichuSensei.Core.Domain.Tests.csproj", "{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Domain.Tests", "tests\TichuSensei.Core\Domain\TichuSensei.Core.Domain.Tests\TichuSensei.Core.Domain.Tests.csproj", "{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.Infrastructure.Identity.Tests", "tests\TichuSensei.Infrastructure\Identity\TichuSensei.Infrastructure.Identity.Tests\TichuSensei.Infrastructure.Identity.Tests.csproj", "{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Identity.Tests", "tests\TichuSensei.Infrastructure\Identity\TichuSensei.Infrastructure.Identity.Tests\TichuSensei.Infrastructure.Identity.Tests.csproj", "{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.Infrastructure.Persistence.Tests", "tests\TichuSensei.Infrastructure\Persistence\TichuSensei.Infrastructure.Persistence.Tests\TichuSensei.Infrastructure.Persistence.Tests.csproj", "{764F09CF-244F-4FF7-B66C-CFF3418003CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Persistence.Tests", "tests\TichuSensei.Infrastructure\Persistence\TichuSensei.Infrastructure.Persistence.Tests\TichuSensei.Infrastructure.Persistence.Tests.csproj", "{764F09CF-244F-4FF7-B66C-CFF3418003CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.Infrastructure.Shared.Tests", "tests\TichuSensei.Infrastructure\Shared\TichuSensei.Infrastructure.Shared.Tests\TichuSensei.Infrastructure.Shared.Tests.csproj", "{06908532-F41A-4DE7-81E5-0E39B1F18985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared.Tests", "tests\TichuSensei.Infrastructure\Shared\TichuSensei.Infrastructure.Shared.Tests\TichuSensei.Infrastructure.Shared.Tests.csproj", "{06908532-F41A-4DE7-81E5-0E39B1F18985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TichuSensei.WebApi.Tests", "tests\TichuSensei.WebApi\TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", "tests\TichuSensei.WebApi\TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
