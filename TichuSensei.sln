@@ -10,6 +10,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CC3260DB-7E50-4A57-93AA-5C88404D772B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{9B153B09-71DB-4D8F-BF87-4EDA4715566A}"
+	ProjectSection(SolutionItems) = preProject
+		..\CleanArchitecture\src\WebUI\appsettings.Development.json = ..\CleanArchitecture\src\WebUI\appsettings.Development.json
+		..\CleanArchitecture\src\WebUI\appsettings.json = ..\CleanArchitecture\src\WebUI\appsettings.json
+		..\CleanArchitecture\src\WebUI\appsettings.Production.json = ..\CleanArchitecture\src\WebUI\appsettings.Production.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CAE1B7B3-B5DF-4DF0-AFC4-A5B4FA7719FC}"
 EndProject
@@ -56,6 +61,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Tests", "tests\TichuSensei.Infrastructure\TichuSensei.Infrastructure.Tests\TichuSensei.Infrastructure.Tests.csproj", "{06908532-F41A-4DE7-81E5-0E39B1F18985}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", "tests\TichuSensei.WebApi\TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".settingfiles", ".settingfiles", "{DC1DEC2A-4880-441C-A571-43346AB164A8}"
+	ProjectSection(SolutionItems) = preProject
+		..\CleanArchitecture\src\WebUI\appsettings.Development.json = ..\CleanArchitecture\src\WebUI\appsettings.Development.json
+		..\CleanArchitecture\src\WebUI\appsettings.json = ..\CleanArchitecture\src\WebUI\appsettings.json
+		..\CleanArchitecture\src\WebUI\appsettings.Production.json = ..\CleanArchitecture\src\WebUI\appsettings.Production.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
