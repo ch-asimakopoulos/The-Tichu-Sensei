@@ -41,27 +41,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Application", "src\TichuSensei.Core\Application\TichuSensei.Core.Application.csproj", "{B889E72A-2B14-49A4-9E4D-52C500A21029}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Identity", "src\TichuSensei.Infrastructure\Identity\TichuSensei.Infrastructure.Identity.csproj", "{0C86A4A6-05EF-4E13-897B-FD65B079908F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Persistence", "src\TichuSensei.Infrastructure\Persistence\TichuSensei.Infrastructure.Persistence.csproj", "{3AD377BB-3C4B-4C83-BBD3-991C4A916D55}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi", "src\TichuSensei.WebApi\TichuSensei.WebApi.csproj", "{1EAFCDF7-CF81-4272-AA1F-20695938F553}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A99DAED5-75C8-4070-87D6-F208A02CE828}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".dockerfiles", ".dockerfiles", "{EC2409FB-7757-4FEF-A109-6989F269F1D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared", "src\TichuSensei.Infrastructure\Shared\TichuSensei.Infrastructure.Shared.csproj", "{04E0D787-579A-49A2-B2D4-D1C51FFF2281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure", "src\TichuSensei.Infrastructure\TichuSensei.Infrastructure.csproj", "{04E0D787-579A-49A2-B2D4-D1C51FFF2281}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Application.Tests", "tests\TichuSensei.Core\Application\TichuSensei.Core.Application.Tests\TichuSensei.Core.Application.Tests.csproj", "{8AE9B4C2-17CC-4AE3-8CBB-C8A7EE90EB07}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Core.Domain.Tests", "tests\TichuSensei.Core\Domain\TichuSensei.Core.Domain.Tests\TichuSensei.Core.Domain.Tests.csproj", "{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Identity.Tests", "tests\TichuSensei.Infrastructure\Identity\TichuSensei.Infrastructure.Identity.Tests\TichuSensei.Infrastructure.Identity.Tests.csproj", "{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Persistence.Tests", "tests\TichuSensei.Infrastructure\Persistence\TichuSensei.Infrastructure.Persistence.Tests\TichuSensei.Infrastructure.Persistence.Tests.csproj", "{764F09CF-244F-4FF7-B66C-CFF3418003CF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Shared.Tests", "tests\TichuSensei.Infrastructure\Shared\TichuSensei.Infrastructure.Shared.Tests\TichuSensei.Infrastructure.Shared.Tests.csproj", "{06908532-F41A-4DE7-81E5-0E39B1F18985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.Tests", "tests\TichuSensei.Infrastructure\TichuSensei.Infrastructure.Tests\TichuSensei.Infrastructure.Tests.csproj", "{06908532-F41A-4DE7-81E5-0E39B1F18985}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", "tests\TichuSensei.WebApi\TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}"
 EndProject
@@ -79,14 +71,6 @@ Global
 		{B889E72A-2B14-49A4-9E4D-52C500A21029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B889E72A-2B14-49A4-9E4D-52C500A21029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B889E72A-2B14-49A4-9E4D-52C500A21029}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C86A4A6-05EF-4E13-897B-FD65B079908F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C86A4A6-05EF-4E13-897B-FD65B079908F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C86A4A6-05EF-4E13-897B-FD65B079908F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C86A4A6-05EF-4E13-897B-FD65B079908F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AD377BB-3C4B-4C83-BBD3-991C4A916D55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AD377BB-3C4B-4C83-BBD3-991C4A916D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AD377BB-3C4B-4C83-BBD3-991C4A916D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AD377BB-3C4B-4C83-BBD3-991C4A916D55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EAFCDF7-CF81-4272-AA1F-20695938F553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1EAFCDF7-CF81-4272-AA1F-20695938F553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EAFCDF7-CF81-4272-AA1F-20695938F553}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -107,14 +91,6 @@ Global
 		{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC6A47E3-CE7E-4029-8AC3-627FCDC40115}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA8F4631-683F-4F8D-B21B-D6E5B416D59E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{764F09CF-244F-4FF7-B66C-CFF3418003CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{764F09CF-244F-4FF7-B66C-CFF3418003CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{764F09CF-244F-4FF7-B66C-CFF3418003CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{764F09CF-244F-4FF7-B66C-CFF3418003CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06908532-F41A-4DE7-81E5-0E39B1F18985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06908532-F41A-4DE7-81E5-0E39B1F18985}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06908532-F41A-4DE7-81E5-0E39B1F18985}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -136,15 +112,11 @@ Global
 		{6DD45648-C6F1-4A02-9F1C-549B35AE33B3} = {CAE1B7B3-B5DF-4DF0-AFC4-A5B4FA7719FC}
 		{566A4A43-F72F-460E-9220-34240FC293D8} = {358EF228-E349-4A23-BB41-722E24BD104C}
 		{B889E72A-2B14-49A4-9E4D-52C500A21029} = {358EF228-E349-4A23-BB41-722E24BD104C}
-		{0C86A4A6-05EF-4E13-897B-FD65B079908F} = {CC3260DB-7E50-4A57-93AA-5C88404D772B}
-		{3AD377BB-3C4B-4C83-BBD3-991C4A916D55} = {CC3260DB-7E50-4A57-93AA-5C88404D772B}
 		{1EAFCDF7-CF81-4272-AA1F-20695938F553} = {9B153B09-71DB-4D8F-BF87-4EDA4715566A}
 		{A99DAED5-75C8-4070-87D6-F208A02CE828} = {EC2409FB-7757-4FEF-A109-6989F269F1D2}
 		{04E0D787-579A-49A2-B2D4-D1C51FFF2281} = {CC3260DB-7E50-4A57-93AA-5C88404D772B}
 		{8AE9B4C2-17CC-4AE3-8CBB-C8A7EE90EB07} = {C2B0F485-4849-4383-872D-2B826ABF7B1F}
 		{EC6A47E3-CE7E-4029-8AC3-627FCDC40115} = {C2B0F485-4849-4383-872D-2B826ABF7B1F}
-		{BA8F4631-683F-4F8D-B21B-D6E5B416D59E} = {BF3480CE-4A01-4CD9-9DF4-D12675363375}
-		{764F09CF-244F-4FF7-B66C-CFF3418003CF} = {BF3480CE-4A01-4CD9-9DF4-D12675363375}
 		{06908532-F41A-4DE7-81E5-0E39B1F18985} = {BF3480CE-4A01-4CD9-9DF4-D12675363375}
 		{C24E333B-2F01-4A78-8CE9-CCD88B7FE532} = {6DD45648-C6F1-4A02-9F1C-549B35AE33B3}
 	EndGlobalSection
