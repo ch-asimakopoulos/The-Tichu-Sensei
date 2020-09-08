@@ -6,4 +6,14 @@
     <UserSecretsId>9db76f03-f154-4ffa-9d01-f528765aa930</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TichuSensei.Core\Application\TichuSensei.Core.Application.csproj" />
+    <ProjectReference Include="..\TichuSensei.Infrastructure\TichuSensei.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

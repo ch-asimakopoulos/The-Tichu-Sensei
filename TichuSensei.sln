@@ -62,11 +62,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Infrastructure.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", "tests\TichuSensei.WebApi\TichuSensei.WebApi.Tests\TichuSensei.WebApi.Tests.csproj", "{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".settingfiles", ".settingfiles", "{DC1DEC2A-4880-441C-A571-43346AB164A8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".migrationcommands", ".migrationcommands", "{A17DE214-F9CE-41B8-9832-5FC942F69717}"
 	ProjectSection(SolutionItems) = preProject
-		..\CleanArchitecture\src\WebUI\appsettings.Development.json = ..\CleanArchitecture\src\WebUI\appsettings.Development.json
-		..\CleanArchitecture\src\WebUI\appsettings.json = ..\CleanArchitecture\src\WebUI\appsettings.json
-		..\CleanArchitecture\src\WebUI\appsettings.Production.json = ..\CleanArchitecture\src\WebUI\appsettings.Production.json
+		initialMigration.txt = initialMigration.txt
 	EndProjectSection
 EndProject
 Global
