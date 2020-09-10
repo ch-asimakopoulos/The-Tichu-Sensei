@@ -1,3 +1,5 @@
-dotnet ef migrations add initialPgsqlMigration --project TichuSensei.Infrastructure\ --startup-project TichuSensei.WebApi\ --output-dir "C:\blah blah blah\src\TichuSensei.Infrastructure\Persistence\Migrations"
+Both these commands need to be run on a Powershell or command prompt opened in your repo's folder.
+
+dotnet ef migrations add initialPgsqlMigration --project TichuSensei.Infrastructure\ --startup-project TichuSensei.WebApi\ --output-dir "YOUR_REPO_PATH\src\TichuSensei.Infrastructure\Persistence\Migrations"
 
 dotnet ef database update --project TichuSensei.Infrastructure\ --startup-project TichuSensei.WebApi\

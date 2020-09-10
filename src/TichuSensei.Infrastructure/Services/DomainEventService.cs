@@ -1,7 +1,7 @@
 ﻿using TichuSensei.Core.Application.Shared.Models;
-using TichuSensei.Core.Domain.Shared;
+using TichuSensei.Kernel;
 using MediatR;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
@@ -10,10 +10,10 @@ namespace TichuSensei.Infrastructure.Services
 {
     public class DomainEventService : IDomainEventService
     {
-        private readonly ILogger<DomainEventService> _logger;
+        private readonly ILogger _logger;
         private readonly IMediator _mediator;
 
-        public DomainEventService(ILogger<DomainEventService> logger, IMediator mediator)
+        public DomainEventService(ILogger logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;
@@ -21,7 +21,7 @@ namespace TichuSensei.Infrastructure.Services
 
         public async Task Publish(DomainEvent domainEvent)
         {
-            _logger.LogInformation("Publishing domain event. Event - {event}", domainEvent.GetType().Name);
+            _logger.Information("Publishing domain event. Event - {event}", domainEvent.GetType().Name);
             await _mediator.Publish(GetNotificationCorrespondingToDomainEvent(domainEvent));
         }
 

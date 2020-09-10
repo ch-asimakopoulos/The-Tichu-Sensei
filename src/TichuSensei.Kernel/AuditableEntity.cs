@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TichuSensei.Core.Domain.Shared
+namespace TichuSensei.Kernel
 {
     public abstract class AuditableEntity
     {

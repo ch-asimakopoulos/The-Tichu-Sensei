@@ -67,6 +67,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".migrationcommands", ".migr
 		initialMigration.txt = initialMigration.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Kernel", "src\TichuSensei.Kernel\TichuSensei.Kernel.csproj", "{C3F3C19F-E30C-49D7-96EA-A0837C059D52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kernel", "Kernel", "{20E684DA-EDC0-43F2-A799-202562B76986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +113,10 @@ Global
 		{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C24E333B-2F01-4A78-8CE9-CCD88B7FE532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F3C19F-E30C-49D7-96EA-A0837C059D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F3C19F-E30C-49D7-96EA-A0837C059D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F3C19F-E30C-49D7-96EA-A0837C059D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F3C19F-E30C-49D7-96EA-A0837C059D52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +137,8 @@ Global
 		{EC6A47E3-CE7E-4029-8AC3-627FCDC40115} = {C2B0F485-4849-4383-872D-2B826ABF7B1F}
 		{06908532-F41A-4DE7-81E5-0E39B1F18985} = {BF3480CE-4A01-4CD9-9DF4-D12675363375}
 		{C24E333B-2F01-4A78-8CE9-CCD88B7FE532} = {6DD45648-C6F1-4A02-9F1C-549B35AE33B3}
+		{C3F3C19F-E30C-49D7-96EA-A0837C059D52} = {20E684DA-EDC0-43F2-A799-202562B76986}
+		{20E684DA-EDC0-43F2-A799-202562B76986} = {D90CC2C8-1F6C-41CC-B2A9-8F52BF9A4241}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}

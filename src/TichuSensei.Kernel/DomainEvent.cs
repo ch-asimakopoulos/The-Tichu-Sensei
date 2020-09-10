@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TichuSensei.Core.Domain.Shared
+namespace TichuSensei.Kernel
 {
     public interface IHasDomainEvent
     {

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TichuSensei.Core.Domain.Shared;
+using TichuSensei.Kernel;
 
 namespace TichuSensei.Core.Application.Shared.Models
 {

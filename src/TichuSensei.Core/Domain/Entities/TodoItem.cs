@@ -2,7 +2,7 @@
 using TichuSensei.Core.Domain.Events;
 using System;
 using System.Collections.Generic;
-using TichuSensei.Core.Domain.Shared;
+using TichuSensei.Kernel;
 
 namespace TichuSensei.Core.Domain.Entities
 {

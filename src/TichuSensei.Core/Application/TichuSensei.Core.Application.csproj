@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TichuSensei.Kernel\TichuSensei.Kernel.csproj" />
     <ProjectReference Include="..\Domain\TichuSensei.Core.Domain.csproj" />
   </ItemGroup>
 

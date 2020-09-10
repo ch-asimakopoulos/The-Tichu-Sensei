@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Core.Domain.Shared;
+using TichuSensei.Kernel;
 using TichuSensei.Infrastructure.Identity;
 
 namespace TichuSensei.Infrastructure.Persistence
