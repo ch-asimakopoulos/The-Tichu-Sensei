@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
 using TichuSensei.Kernel;
 using TichuSensei.Infrastructure.Identity;
+using TichuSensei.Core.Domain.Entities;
 
 namespace TichuSensei.Infrastructure.Persistence
 {
@@ -31,6 +32,15 @@ namespace TichuSensei.Infrastructure.Persistence
             _domainEventService = domainEventService;
             _dateTime = dateTime;
         }
+
+        public DbSet<Player> Players { get; set; }
+        public DbSet<PlayerStats> PlayerStats { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamStats> TeamStats { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<GameStats> GameStats { get; set; }
+        public DbSet<Round> Rounds { get; set; }
+        public DbSet<Call> Calls { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

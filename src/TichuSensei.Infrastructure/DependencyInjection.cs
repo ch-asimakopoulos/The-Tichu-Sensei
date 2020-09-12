@@ -16,15 +16,12 @@ namespace TichuSensei.Infrastructure
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseNpgsql(
                         configuration.GetConnectionString("DefaultConnection"),
-                        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
-            services.AddScoped<IDomainEventService, DomainEventService>();
-
-            services.AddDefaultIdentity<ApplicationUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
+                    .UseSnakeCaseNamingConvention()
+                    ).AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>())
+                    .AddScoped<IDomainEventService, DomainEventService>()
+                    .AddDefaultIdentity<ApplicationUser>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using TichuSensei.Core.Application;
 using TichuSensei.Core.Application.Shared.Interfaces;
 using TichuSensei.Infrastructure;
@@ -37,6 +38,7 @@ namespace TichuSensei.WebApi
 
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
+            services.AddSingleton<ILogger>(Log.Logger);
 
             services.AddHttpContextAccessor();
 
