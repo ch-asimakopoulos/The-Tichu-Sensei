@@ -5,10 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
+    <Compile Remove="Shared\Models\NewFolder\**" />
+    <EmbeddedResource Remove="Shared\Models\NewFolder\**" />
+    <None Remove="Shared\Models\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Players\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="FluentValidation" Version="9.2.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
     <PackageReference Include="MediatR" Version="8.1.0" />
