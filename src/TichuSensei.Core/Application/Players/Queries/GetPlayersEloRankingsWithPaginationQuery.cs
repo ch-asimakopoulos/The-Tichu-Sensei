@@ -18,8 +18,8 @@ namespace TichuSensei.Core.Application.Players.Queries
     /// </summary>
     public class GetPlayersEloRankingsWithPaginationQuery : IRequest<PaginatedList<PlayerEloRankingsDTO>>
     {
-        public int PageNumber { get; set; } = Kernel.Consts.Pagination.PageNumber;
-        public int PageSize { get; set; } = Kernel.Consts.Pagination.PageSize;
+        public int PageNumber { get; set; } = Kernel.Consts.Pagination.PageNumber.Default;
+        public int PageSize { get; set; } = Kernel.Consts.Pagination.PageSize.Default;
 
         public Kernel.Enums.OrderDirection OrderDirection = Kernel.Enums.OrderDirection.Ascending;
 
