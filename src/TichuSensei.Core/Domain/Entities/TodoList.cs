@@ -1,4 +1,4 @@
-﻿using TichuSensei.Kernel;
+﻿using TichuSensei.Kernel.BaseModels;
 using System.Collections.Generic;
 
 namespace TichuSensei.Core.Domain.Entities

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Kernel;
+using TichuSensei.Kernel.BaseModels;
 using TichuSensei.Infrastructure.Identity;
 using TichuSensei.Core.Domain.Entities;
 

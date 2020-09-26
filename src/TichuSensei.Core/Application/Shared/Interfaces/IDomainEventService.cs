@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TichuSensei.Kernel;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Application.Shared.Interfaces
 {

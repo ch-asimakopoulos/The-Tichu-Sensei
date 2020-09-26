@@ -17,7 +17,7 @@ namespace TichuSensei.Core.Application.Shared.Models
 
         public static Result Success()
         {
-            return new Result(true, new string[] { });
+            return new Result(true, System.Array.Empty<string>());
         }
 
         public static Result Failure(IEnumerable<string> errors)

@@ -36,7 +36,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
 
             var elapsedMilliseconds = _timer.ElapsedMilliseconds;
 
-            if (elapsedMilliseconds > 500)
+            if (elapsedMilliseconds > Kernel.Consts.Logging.ElapsedMillisecondLimitForLoggingSlowRequests)
             {
                 var requestName = typeof(TRequest).Name;
                 var userId = _currentUserService.UserId ?? string.Empty;
@@ -47,8 +47,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
                     userName = await _identityService.GetUserNameAsync(userId);
                 }
 
-                _logger.Warning("TichuSensei Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
-                    requestName, elapsedMilliseconds, userId, userName, request);
+                _logger.Warning($"TichuSensei Long Running Request: {requestName} ({elapsedMilliseconds} milliseconds) {userId} {userName} {request}");
             }
 
             return response;

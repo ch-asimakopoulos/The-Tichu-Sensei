@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TichuSensei.Core.Domain.Events;
-using TichuSensei.Kernel;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {

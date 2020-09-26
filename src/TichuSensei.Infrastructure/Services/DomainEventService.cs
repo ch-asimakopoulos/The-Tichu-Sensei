@@ -1,5 +1,5 @@
 ﻿using TichuSensei.Core.Application.Shared.Models;
-using TichuSensei.Kernel;
+using TichuSensei.Kernel.BaseModels;
 using MediatR;
 using Serilog;
 using System;
