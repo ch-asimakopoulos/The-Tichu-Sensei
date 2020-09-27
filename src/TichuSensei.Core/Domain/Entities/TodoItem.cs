@@ -1,7 +1,7 @@
-﻿using TichuSensei.Core.Domain.Enums;
-using TichuSensei.Core.Domain.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using TichuSensei.Core.Domain.Enums;
+using TichuSensei.Core.Domain.Events;
 using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities

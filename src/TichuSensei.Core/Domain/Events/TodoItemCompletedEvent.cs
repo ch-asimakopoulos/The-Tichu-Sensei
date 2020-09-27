@@ -1,5 +1,5 @@
-﻿using TichuSensei.Kernel.BaseModels;
-using TichuSensei.Core.Domain.Entities;
+﻿using TichuSensei.Core.Domain.Entities;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Events
 {

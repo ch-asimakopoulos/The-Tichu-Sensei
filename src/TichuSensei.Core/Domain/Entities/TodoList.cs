@@ -1,5 +1,5 @@
-﻿using TichuSensei.Kernel.BaseModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {

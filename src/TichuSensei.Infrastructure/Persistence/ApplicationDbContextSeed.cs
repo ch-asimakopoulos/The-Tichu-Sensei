@@ -1,7 +1,7 @@
-﻿using TichuSensei.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+using TichuSensei.Infrastructure.Identity;
 
 namespace TichuSensei.Infrastructure.Persistence
 {
@@ -20,10 +20,10 @@ namespace TichuSensei.Infrastructure.Persistence
         public static async Task SeedSampleDataAsync(ApplicationDbContext context)
         {
             // Seed, if necessary
-            
+
             await context.SaveChangesAsync();
-            
+
         }
-        
+
     }
 }

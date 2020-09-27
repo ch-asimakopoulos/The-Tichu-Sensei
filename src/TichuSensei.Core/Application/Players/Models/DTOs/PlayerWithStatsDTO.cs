@@ -1,6 +1,6 @@
-﻿using TichuSensei.Core.Application.Shared.Mappings;
+﻿using System;
+using TichuSensei.Core.Application.Shared.Mappings;
 using TichuSensei.Core.Domain.Entities;
-using System;
 
 namespace TichuSensei.Core.Application.Players.Models.DTOs
 {

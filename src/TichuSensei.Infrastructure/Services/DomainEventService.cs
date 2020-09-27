@@ -1,10 +1,10 @@
-﻿using TichuSensei.Core.Application.Shared.Models;
-using TichuSensei.Kernel.BaseModels;
-using MediatR;
+﻿using MediatR;
 using Serilog;
 using System;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
+using TichuSensei.Core.Application.Shared.Models;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Infrastructure.Services
 {

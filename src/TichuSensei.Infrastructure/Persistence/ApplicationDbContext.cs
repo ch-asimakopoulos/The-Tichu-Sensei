@@ -7,14 +7,16 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Kernel.BaseModels;
-using TichuSensei.Infrastructure.Identity;
 using TichuSensei.Core.Domain.Entities;
+using TichuSensei.Infrastructure.Identity;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Infrastructure.Persistence
 {
 
-
+    /// <summary>
+    /// The applications Database context.
+    /// </summary>
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
     {
         private readonly ICurrentUserService _currentUserService;
@@ -32,14 +34,37 @@ namespace TichuSensei.Infrastructure.Persistence
             _domainEventService = domainEventService;
             _dateTime = dateTime;
         }
-
+        /// <summary>
+        /// A database set object of Tichu Sensei's players.
+        /// </summary>
         public DbSet<Player> Players { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's player statistics.
+        /// </summary>
         public DbSet<PlayerStats> PlayerStats { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's teams.
+        /// </summary>
         public DbSet<Team> Teams { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's team statistics.
+        /// </summary>
         public DbSet<TeamStats> TeamStats { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's games.
+        /// </summary>
         public DbSet<Game> Games { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's game statistics.
+        /// </summary>
         public DbSet<GameStats> GameStats { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's rounds.
+        /// </summary>
         public DbSet<Round> Rounds { get; set; }
+        /// <summary>
+        /// A database set object of Tichu Sensei's Tichu or Grand Tichu hand calls.
+        /// </summary>
         public DbSet<Call> Calls { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

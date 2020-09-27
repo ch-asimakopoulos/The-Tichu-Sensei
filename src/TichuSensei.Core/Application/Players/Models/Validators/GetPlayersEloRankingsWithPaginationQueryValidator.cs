@@ -27,7 +27,7 @@ namespace TichuSensei.Core.Application.Players.Models.Validators
 
             RuleFor(ch => ch.PageSize).LessThan(Kernel.Consts.Pagination.PageSize.Max).
                 WithMessage($"Page size cannot be more than{Kernel.Consts.Pagination.PageSize.Max}");
-            
+
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
-using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 using TichuSensei.Core.Application.Players.Models.DTOs;
 using TichuSensei.Core.Application.Shared.Interfaces;
 using TichuSensei.Core.Application.Shared.Mappings;
 using TichuSensei.Core.Application.Shared.Models;
-using System.Threading;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace TichuSensei.Core.Application.Players.Queries
 {

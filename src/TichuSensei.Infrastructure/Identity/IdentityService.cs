@@ -1,9 +1,9 @@
-﻿using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Core.Application.Shared.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using TichuSensei.Core.Application.Shared.Interfaces;
+using TichuSensei.Core.Application.Shared.Models;
 
 namespace TichuSensei.Infrastructure.Identity
 {

@@ -1,6 +1,6 @@
-﻿using TichuSensei.Core.Domain.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using TichuSensei.Core.Domain.Exceptions;
 using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.ValueObjects
