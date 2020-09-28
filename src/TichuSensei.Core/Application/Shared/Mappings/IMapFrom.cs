@@ -10,20 +10,10 @@ namespace TichuSensei.Core.Application.Shared.Mappings
 
         void Mapping(Profile profile)
         {
-
             if (GetType().Equals(o: new PlayerEloRankingsDTO()))
             {
                 profile.CreateMap<Player, PlayerEloRankingsDTO>()
-                .ForMember(dto => dto.PlayerEloRankings, o => o.MapFrom(ch => ch.));
-
-                return;
-            }
-
-            if (GetType().Equals(o: new PlayerEloStatsDTO()))
-            {
-                profile.CreateMap<Player, PlayerEloRankingsDTO>()
                 .ForMember(dto => dto.PlayerEloRankings, o => o.MapFrom(ch => ch.Stats));
-
                 return;
             }
 
