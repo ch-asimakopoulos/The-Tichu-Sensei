@@ -11,7 +11,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id.
         /// </summary>
-        public string TeamId { get; set; }
+        public long TeamId { get; set; }
         /// <summary>
         /// The team's name.
         /// </summary>
@@ -23,7 +23,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id of the first player of the team.
         /// </summary>
-        public string PlayerOneId { get; set; }
+        public long PlayerOneId { get; set; }
         /// <summary>
         /// The player object corresponding to the first player of the team. 
         /// </summary>
@@ -31,7 +31,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id of the second player of the team.
         /// </summary>
-        public string PlayerTwoId { get; set; }
+        public long PlayerTwoId { get; set; }
         /// <summary>
         /// The player object corresponding to the second player of the team.
         /// </summary>

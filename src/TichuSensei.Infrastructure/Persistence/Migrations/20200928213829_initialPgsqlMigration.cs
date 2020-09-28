@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 namespace TichuSensei.Infrastructure.Persistence.Migrations
 {
-    public partial class TichuSenseiMigration : Migration
+    public partial class initialPgsqlMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,7 +85,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 name: "players",
                 columns: table => new
                 {
-                    player_id = table.Column<string>(nullable: false),
+                    player_id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     user_id = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true),
                     date_created = table.Column<DateTime>(nullable: false),
@@ -206,23 +207,24 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 name: "player_stats",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
+                    id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     elo_rating = table.Column<int>(nullable: false),
-                    games_total = table.Column<int>(nullable: false),
-                    games_won = table.Column<int>(nullable: false),
-                    rounds_total = table.Column<int>(nullable: false),
-                    rounds_drawn = table.Column<int>(nullable: false),
-                    rounds_won = table.Column<int>(nullable: false),
-                    points_won = table.Column<int>(nullable: false),
-                    grand_tichu_calls_total = table.Column<int>(nullable: false),
-                    grand_tichu_calls_won = table.Column<int>(nullable: false),
-                    tichu_calls_total = table.Column<int>(nullable: false),
-                    tichu_calls_won = table.Column<int>(nullable: false),
-                    high_cards_total = table.Column<int>(nullable: false),
-                    opponents_high_cards_total = table.Column<int>(nullable: false),
-                    bombs_total = table.Column<int>(nullable: false),
-                    opponents_bombs_total = table.Column<int>(nullable: false),
-                    player_id = table.Column<string>(nullable: true)
+                    games_total = table.Column<long>(nullable: false),
+                    games_won = table.Column<long>(nullable: false),
+                    rounds_total = table.Column<long>(nullable: false),
+                    rounds_drawn = table.Column<long>(nullable: false),
+                    rounds_won = table.Column<long>(nullable: false),
+                    points_won = table.Column<long>(nullable: false),
+                    grand_tichu_calls_total = table.Column<long>(nullable: false),
+                    grand_tichu_calls_won = table.Column<long>(nullable: false),
+                    tichu_calls_total = table.Column<long>(nullable: false),
+                    tichu_calls_won = table.Column<long>(nullable: false),
+                    high_cards_total = table.Column<long>(nullable: false),
+                    opponents_high_cards_total = table.Column<long>(nullable: false),
+                    bombs_total = table.Column<long>(nullable: false),
+                    opponents_bombs_total = table.Column<long>(nullable: false),
+                    player_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,18 +234,19 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         column: x => x.player_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "teams",
                 columns: table => new
                 {
-                    team_id = table.Column<string>(nullable: false),
+                    team_id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(nullable: true),
                     date_created = table.Column<DateTime>(nullable: false),
-                    player_one_id = table.Column<string>(nullable: true),
-                    player_two_id = table.Column<string>(nullable: true)
+                    player_one_id = table.Column<long>(nullable: false),
+                    player_two_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,31 +256,31 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         column: x => x.player_one_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_teams_players_player_two_id",
                         column: x => x.player_two_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "games",
                 columns: table => new
                 {
-                    game_id = table.Column<string>(nullable: false),
+                    game_id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     mercy_rule = table.Column<bool>(nullable: false),
                     game_over = table.Column<bool>(nullable: false),
                     date_created = table.Column<DateTime>(nullable: false),
                     date_ended = table.Column<DateTime>(nullable: true),
-                    team_one_id = table.Column<string>(nullable: true),
-                    team_two_id = table.Column<string>(nullable: true),
-                    player_one_id = table.Column<string>(nullable: true),
-                    player_two_id = table.Column<string>(nullable: true),
-                    player_three_id = table.Column<string>(nullable: true),
-                    player_four_id = table.Column<string>(nullable: true),
-                    stats_id = table.Column<string>(nullable: true)
+                    team_one_id = table.Column<long>(nullable: false),
+                    team_two_id = table.Column<long>(nullable: false),
+                    player_one_id = table.Column<long>(nullable: false),
+                    player_two_id = table.Column<long>(nullable: false),
+                    player_three_id = table.Column<long>(nullable: false),
+                    player_four_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -287,66 +290,61 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         column: x => x.player_four_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_games_players_player_one_id",
                         column: x => x.player_one_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_games_players_player_three_id",
                         column: x => x.player_three_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_games_players_player_two_id",
                         column: x => x.player_two_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "fk_games_player_stats_stats_id",
-                        column: x => x.stats_id,
-                        principalTable: "player_stats",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_games_teams_team_one_id",
                         column: x => x.team_one_id,
                         principalTable: "teams",
                         principalColumn: "team_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_games_teams_team_two_id",
                         column: x => x.team_two_id,
                         principalTable: "teams",
                         principalColumn: "team_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "team_stats",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
+                    id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     elo_rating = table.Column<int>(nullable: false),
-                    games_total = table.Column<int>(nullable: false),
-                    games_won = table.Column<int>(nullable: false),
-                    rounds_total = table.Column<int>(nullable: false),
-                    rounds_drawn = table.Column<int>(nullable: false),
-                    rounds_won = table.Column<int>(nullable: false),
-                    points_won = table.Column<int>(nullable: false),
-                    grand_tichu_calls_total = table.Column<int>(nullable: false),
-                    grand_tichu_calls_won = table.Column<int>(nullable: false),
-                    tichu_calls_total = table.Column<int>(nullable: false),
-                    tichu_calls_won = table.Column<int>(nullable: false),
-                    high_cards_total = table.Column<int>(nullable: false),
-                    opponents_high_cards_total = table.Column<int>(nullable: false),
-                    bombs_total = table.Column<int>(nullable: false),
-                    opponents_bombs_total = table.Column<int>(nullable: false),
-                    team_id = table.Column<string>(nullable: true)
+                    games_total = table.Column<long>(nullable: false),
+                    games_won = table.Column<long>(nullable: false),
+                    rounds_total = table.Column<long>(nullable: false),
+                    rounds_drawn = table.Column<long>(nullable: false),
+                    rounds_won = table.Column<long>(nullable: false),
+                    points_won = table.Column<long>(nullable: false),
+                    grand_tichu_calls_total = table.Column<long>(nullable: false),
+                    grand_tichu_calls_won = table.Column<long>(nullable: false),
+                    tichu_calls_total = table.Column<long>(nullable: false),
+                    tichu_calls_won = table.Column<long>(nullable: false),
+                    high_cards_total = table.Column<long>(nullable: false),
+                    opponents_high_cards_total = table.Column<long>(nullable: false),
+                    bombs_total = table.Column<long>(nullable: false),
+                    opponents_bombs_total = table.Column<long>(nullable: false),
+                    team_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -356,63 +354,64 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         column: x => x.team_id,
                         principalTable: "teams",
                         principalColumn: "team_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "game_stats",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
-                    rounds_total = table.Column<int>(nullable: false),
-                    rounds_won_team_one = table.Column<int>(nullable: false),
-                    rounds_won_team_two = table.Column<int>(nullable: false),
-                    grand_tichu_calls_total_team_one = table.Column<int>(nullable: false),
-                    grand_tichu_calls_won_team_one = table.Column<int>(nullable: false),
-                    grand_tichu_calls_total_team_two = table.Column<int>(nullable: false),
-                    grand_tichu_calls_won_team_two = table.Column<int>(nullable: false),
-                    tichu_calls_total_team_one = table.Column<int>(nullable: false),
-                    tichu_calls_won_team_one = table.Column<int>(nullable: false),
-                    tichu_calls_total_team_two = table.Column<int>(nullable: false),
-                    tichu_calls_won_team_two = table.Column<int>(nullable: false),
-                    high_cards_total_team_one = table.Column<int>(nullable: false),
-                    high_cards_total_team_two = table.Column<int>(nullable: false),
-                    bombs_total_team_one = table.Column<int>(nullable: false),
-                    bombs_total_team_two = table.Column<int>(nullable: false),
-                    game_id = table.Column<int>(nullable: false),
-                    game_id1 = table.Column<string>(nullable: true)
+                    id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    rounds_total = table.Column<long>(nullable: false),
+                    rounds_won_team_one = table.Column<long>(nullable: false),
+                    rounds_won_team_two = table.Column<long>(nullable: false),
+                    grand_tichu_calls_total_team_one = table.Column<long>(nullable: false),
+                    grand_tichu_calls_won_team_one = table.Column<long>(nullable: false),
+                    grand_tichu_calls_total_team_two = table.Column<long>(nullable: false),
+                    grand_tichu_calls_won_team_two = table.Column<long>(nullable: false),
+                    tichu_calls_total_team_one = table.Column<long>(nullable: false),
+                    tichu_calls_won_team_one = table.Column<long>(nullable: false),
+                    tichu_calls_total_team_two = table.Column<long>(nullable: false),
+                    tichu_calls_won_team_two = table.Column<long>(nullable: false),
+                    high_cards_total_team_one = table.Column<long>(nullable: false),
+                    high_cards_total_team_two = table.Column<long>(nullable: false),
+                    bombs_total_team_one = table.Column<long>(nullable: false),
+                    bombs_total_team_two = table.Column<long>(nullable: false),
+                    game_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_game_stats", x => x.id);
                     table.ForeignKey(
-                        name: "fk_game_stats_games_game_id1",
-                        column: x => x.game_id1,
+                        name: "fk_game_stats_games_game_id",
+                        column: x => x.game_id,
                         principalTable: "games",
                         principalColumn: "game_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "rounds",
                 columns: table => new
                 {
-                    round_id = table.Column<string>(nullable: false),
+                    round_id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     date_created = table.Column<DateTime>(nullable: false),
                     date_ended = table.Column<DateTime>(nullable: true),
-                    team_one_id = table.Column<string>(nullable: true),
-                    team_two_id = table.Column<string>(nullable: true),
-                    player_one_id = table.Column<string>(nullable: true),
-                    player_two_id = table.Column<string>(nullable: true),
-                    player_three_id = table.Column<string>(nullable: true),
-                    player_four_id = table.Column<string>(nullable: true),
-                    score_team_one = table.Column<int>(nullable: false),
-                    score_team_two = table.Column<int>(nullable: false),
-                    high_cards_team_one = table.Column<int>(nullable: false),
-                    high_cards_team_two = table.Column<int>(nullable: false),
-                    bombs_team_one = table.Column<int>(nullable: false),
-                    bombs_team_two = table.Column<int>(nullable: false),
-                    game_stats_id = table.Column<string>(nullable: true)
+                    team_one_id = table.Column<long>(nullable: false),
+                    team_two_id = table.Column<long>(nullable: false),
+                    player_one_id = table.Column<long>(nullable: false),
+                    player_two_id = table.Column<long>(nullable: false),
+                    player_three_id = table.Column<long>(nullable: false),
+                    player_four_id = table.Column<long>(nullable: false),
+                    score_team_one = table.Column<long>(nullable: false),
+                    score_team_two = table.Column<long>(nullable: false),
+                    high_cards_team_one = table.Column<long>(nullable: false),
+                    high_cards_team_two = table.Column<long>(nullable: false),
+                    bombs_team_one = table.Column<long>(nullable: false),
+                    bombs_team_two = table.Column<long>(nullable: false),
+                    game_stats_id = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -428,56 +427,58 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         column: x => x.player_four_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_players_player_one_id",
                         column: x => x.player_one_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_players_player_three_id",
                         column: x => x.player_three_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_players_player_two_id",
                         column: x => x.player_two_id,
                         principalTable: "players",
                         principalColumn: "player_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_teams_team_one_id",
                         column: x => x.team_one_id,
                         principalTable: "teams",
                         principalColumn: "team_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_teams_team_two_id",
                         column: x => x.team_two_id,
                         principalTable: "teams",
                         principalColumn: "team_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "calls",
                 columns: table => new
                 {
-                    call_id = table.Column<string>(nullable: false),
-                    player_id = table.Column<string>(nullable: true),
-                    team_id = table.Column<string>(nullable: true),
+                    call_id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    player_id = table.Column<long>(nullable: false),
+                    team_id = table.Column<long>(nullable: false),
                     call_type = table.Column<int>(nullable: false),
-                    success = table.Column<bool>(nullable: false),
-                    round_id = table.Column<string>(nullable: true)
+                    success = table.Column<bool>(nullable: true),
+                    round_id = table.Column<string>(nullable: true),
+                    round_id1 = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_calls", x => x.call_id);
                     table.ForeignKey(
-                        name: "fk_calls_rounds_round_id",
-                        column: x => x.round_id,
+                        name: "fk_calls_rounds_round_id1",
+                        column: x => x.round_id1,
                         principalTable: "rounds",
                         principalColumn: "round_id",
                         onDelete: ReferentialAction.Restrict);
@@ -521,9 +522,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "ix_calls_round_id",
+                name: "ix_calls_round_id1",
                 table: "calls",
-                column: "round_id");
+                column: "round_id1");
 
             migrationBuilder.CreateIndex(
                 name: "ix_device_codes_device_code",
@@ -537,9 +538,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 column: "expiration");
 
             migrationBuilder.CreateIndex(
-                name: "ix_game_stats_game_id1",
+                name: "ix_game_stats_game_id",
                 table: "game_stats",
-                column: "game_id1");
+                column: "game_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_games_player_four_id",
@@ -560,11 +561,6 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 name: "ix_games_player_two_id",
                 table: "games",
                 column: "player_two_id");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_games_stats_id",
-                table: "games",
-                column: "stats_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_games_team_one_id",
@@ -671,6 +667,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 name: "PersistedGrants");
 
             migrationBuilder.DropTable(
+                name: "player_stats");
+
+            migrationBuilder.DropTable(
                 name: "team_stats");
 
             migrationBuilder.DropTable(
@@ -687,9 +686,6 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "games");
-
-            migrationBuilder.DropTable(
-                name: "player_stats");
 
             migrationBuilder.DropTable(
                 name: "teams");

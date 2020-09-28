@@ -52,10 +52,10 @@ namespace TichuSensei.Core.Application.Players.Models.DTOs
         /// <summary>
         /// The total games the player has played.
         /// </summary>
-        private int GamesTotal { get; set; }
+        private long GamesTotal { get; set; }
         /// <summary>
         /// The total games the player has won.
         /// </summary>
-        private int GamesWon { get; set; }
+        private long GamesWon { get; set; }
     }
 }

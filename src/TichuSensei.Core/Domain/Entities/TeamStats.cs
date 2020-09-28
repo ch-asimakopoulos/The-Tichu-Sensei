@@ -8,7 +8,7 @@
         /// <summary>
         /// The unique id. 
         /// </summary>
-        public string Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// The team's Elo rating. Elo is a ranking used to compare teams' and players' proficiency.
         /// </summary>
@@ -16,63 +16,63 @@
         /// <summary>
         /// The total number of games this team has played.
         /// </summary>
-        public int GamesTotal { get; set; }
+        public long GamesTotal { get; set; }
         /// <summary>
         /// The total number of games this team has won.
         /// </summary>
-        public int GamesWon { get; set; }
+        public long GamesWon { get; set; }
         /// <summary>
         /// The total number of rounds this team has played.
         /// </summary>
-        public int RoundsTotal { get; set; }
+        public long RoundsTotal { get; set; }
         /// <summary>
         /// The total number of rounds this team has played that ended in a draw.
         /// </summary>
-        public int RoundsDrawn { get; set; }
+        public long RoundsDrawn { get; set; }
         /// <summary>
         /// The total number of rounds this team has won.
         /// </summary>
-        public int RoundsWon { get; set; }
+        public long RoundsWon { get; set; }
         /// <summary>
         /// The total number of points this team has won.
         /// </summary>
-        public int PointsWon { get; set; }
+        public long PointsWon { get; set; }
         /// <summary>
         /// The total number of Grand Tichu calls this team has made.
         /// </summary>
-        public int GrandTichuCallsTotal { get; set; }
+        public long GrandTichuCallsTotal { get; set; }
         /// <summary>
         /// The total number of Grand Tichu calls this team has won.
         /// </summary>
-        public int GrandTichuCallsWon { get; set; }
+        public long GrandTichuCallsWon { get; set; }
         /// <summary>
         /// The total number of Tichu calls this team has made.
         /// </summary>
-        public int TichuCallsTotal { get; set; }
+        public long TichuCallsTotal { get; set; }
         /// <summary>
         /// The total number of Tichu calls this team has won.
         /// </summary>
-        public int TichuCallsWon { get; set; }
+        public long TichuCallsWon { get; set; }
         /// <summary>
         /// The total number of High Cards the team had in their games.
         /// </summary>
-        public int HighCardsTotal { get; set; }
+        public long HighCardsTotal { get; set; }
         /// <summary>
         /// The total number of High Cards the team's opponents had in their games.
         /// </summary>
-        public int OpponentsHighCardsTotal { get; set; }
+        public long OpponentsHighCardsTotal { get; set; }
         /// <summary>
         /// The total number of Bombs the team had in their games.
         /// </summary>
-        public int BombsTotal { get; set; }
+        public long BombsTotal { get; set; }
         /// <summary>
         /// The total number of Bombs the team's opponents had in their games.
         /// </summary>
-        public int OpponentsBombsTotal { get; set; }
+        public long OpponentsBombsTotal { get; set; }
         /// <summary>
         /// The team's unique Id.
         /// </summary>
-        public string TeamId { get; set; }
+        public long TeamId { get; set; }
         /// <summary>
         /// The team's information. Will only be computed when needed, via lazy loading.
         /// </summary>

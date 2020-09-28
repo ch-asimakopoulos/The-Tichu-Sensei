@@ -10,8 +10,8 @@ using TichuSensei.Infrastructure.Persistence;
 namespace TichuSensei.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200912011402_TichuSenseiMigration")]
-    partial class TichuSenseiMigration
+    [Migration("20200928213829_initialPgsqlMigration")]
+    partial class initialPgsqlMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -291,44 +291,52 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Call", b =>
                 {
-                    b.Property<string>("CallId")
+                    b.Property<long>("CallId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("call_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("CallType")
                         .HasColumnName("call_type")
                         .HasColumnType("integer");
 
-                    b.Property<string>("PlayerId")
+                    b.Property<long>("PlayerId")
                         .HasColumnName("player_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("RoundId")
                         .HasColumnName("round_id")
                         .HasColumnType("text");
 
-                    b.Property<bool>("Success")
+                    b.Property<long?>("RoundId1")
+                        .HasColumnName("round_id1")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("Success")
                         .HasColumnName("success")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("TeamId")
+                    b.Property<long>("TeamId")
                         .HasColumnName("team_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
                     b.HasKey("CallId")
                         .HasName("pk_calls");
 
-                    b.HasIndex("RoundId")
-                        .HasName("ix_calls_round_id");
+                    b.HasIndex("RoundId1")
+                        .HasName("ix_calls_round_id1");
 
                     b.ToTable("calls");
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Game", b =>
                 {
-                    b.Property<string>("GameId")
+                    b.Property<long>("GameId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("game_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnName("date_created")
@@ -346,33 +354,29 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("mercy_rule")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("PlayerFourId")
+                    b.Property<long>("PlayerFourId")
                         .HasColumnName("player_four_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerOneId")
+                    b.Property<long>("PlayerOneId")
                         .HasColumnName("player_one_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerThreeId")
+                    b.Property<long>("PlayerThreeId")
                         .HasColumnName("player_three_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerTwoId")
+                    b.Property<long>("PlayerTwoId")
                         .HasColumnName("player_two_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("StatsId")
-                        .HasColumnName("stats_id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TeamOneId")
+                    b.Property<long>("TeamOneId")
                         .HasColumnName("team_one_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("TeamTwoId")
+                    b.Property<long>("TeamTwoId")
                         .HasColumnName("team_two_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
                     b.HasKey("GameId")
                         .HasName("pk_games");
@@ -389,9 +393,6 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasIndex("PlayerTwoId")
                         .HasName("ix_games_player_two_id");
 
-                    b.HasIndex("StatsId")
-                        .HasName("ix_games_stats_id");
-
                     b.HasIndex("TeamOneId")
                         .HasName("ix_games_team_one_id");
 
@@ -403,92 +404,92 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.GameStats", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("BombsTotalTeamOne")
+                    b.Property<long>("BombsTotalTeamOne")
                         .HasColumnName("bombs_total_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("BombsTotalTeamTwo")
+                    b.Property<long>("BombsTotalTeamTwo")
                         .HasColumnName("bombs_total_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GameId")
+                    b.Property<long>("GameId")
                         .HasColumnName("game_id")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("GameId1")
-                        .HasColumnName("game_id1")
-                        .HasColumnType("text");
-
-                    b.Property<int>("GrandTichuCallsTotalTeamOne")
+                    b.Property<long>("GrandTichuCallsTotalTeamOne")
                         .HasColumnName("grand_tichu_calls_total_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsTotalTeamTwo")
+                    b.Property<long>("GrandTichuCallsTotalTeamTwo")
                         .HasColumnName("grand_tichu_calls_total_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsWonTeamOne")
+                    b.Property<long>("GrandTichuCallsWonTeamOne")
                         .HasColumnName("grand_tichu_calls_won_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsWonTeamTwo")
+                    b.Property<long>("GrandTichuCallsWonTeamTwo")
                         .HasColumnName("grand_tichu_calls_won_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTotalTeamOne")
+                    b.Property<long>("HighCardsTotalTeamOne")
                         .HasColumnName("high_cards_total_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTotalTeamTwo")
+                    b.Property<long>("HighCardsTotalTeamTwo")
                         .HasColumnName("high_cards_total_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsTotal")
+                    b.Property<long>("RoundsTotal")
                         .HasColumnName("rounds_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsWonTeamOne")
+                    b.Property<long>("RoundsWonTeamOne")
                         .HasColumnName("rounds_won_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsWonTeamTwo")
+                    b.Property<long>("RoundsWonTeamTwo")
                         .HasColumnName("rounds_won_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsTotalTeamOne")
+                    b.Property<long>("TichuCallsTotalTeamOne")
                         .HasColumnName("tichu_calls_total_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsTotalTeamTwo")
+                    b.Property<long>("TichuCallsTotalTeamTwo")
                         .HasColumnName("tichu_calls_total_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsWonTeamOne")
+                    b.Property<long>("TichuCallsWonTeamOne")
                         .HasColumnName("tichu_calls_won_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsWonTeamTwo")
+                    b.Property<long>("TichuCallsWonTeamTwo")
                         .HasColumnName("tichu_calls_won_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id")
                         .HasName("pk_game_stats");
 
-                    b.HasIndex("GameId1")
-                        .HasName("ix_game_stats_game_id1");
+                    b.HasIndex("GameId")
+                        .HasName("ix_game_stats_game_id");
 
                     b.ToTable("game_stats");
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Player", b =>
                 {
-                    b.Property<string>("PlayerId")
+                    b.Property<long>("PlayerId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("player_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("AvatarPath")
                         .HasColumnName("avatar_path")
@@ -514,73 +515,75 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.PlayerStats", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("BombsTotal")
+                    b.Property<long>("BombsTotal")
                         .HasColumnName("bombs_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.Property<int>("EloRating")
                         .HasColumnName("elo_rating")
                         .HasColumnType("integer");
 
-                    b.Property<int>("GamesTotal")
+                    b.Property<long>("GamesTotal")
                         .HasColumnName("games_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GamesWon")
+                    b.Property<long>("GamesWon")
                         .HasColumnName("games_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsTotal")
+                    b.Property<long>("GrandTichuCallsTotal")
                         .HasColumnName("grand_tichu_calls_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsWon")
+                    b.Property<long>("GrandTichuCallsWon")
                         .HasColumnName("grand_tichu_calls_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTotal")
+                    b.Property<long>("HighCardsTotal")
                         .HasColumnName("high_cards_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("OpponentsBombsTotal")
+                    b.Property<long>("OpponentsBombsTotal")
                         .HasColumnName("opponents_bombs_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("OpponentsHighCardsTotal")
+                    b.Property<long>("OpponentsHighCardsTotal")
                         .HasColumnName("opponents_high_cards_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerId")
+                    b.Property<long>("PlayerId")
                         .HasColumnName("player_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("PointsWon")
+                    b.Property<long>("PointsWon")
                         .HasColumnName("points_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsDrawn")
+                    b.Property<long>("RoundsDrawn")
                         .HasColumnName("rounds_drawn")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsTotal")
+                    b.Property<long>("RoundsTotal")
                         .HasColumnName("rounds_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsWon")
+                    b.Property<long>("RoundsWon")
                         .HasColumnName("rounds_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsTotal")
+                    b.Property<long>("TichuCallsTotal")
                         .HasColumnName("tichu_calls_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsWon")
+                    b.Property<long>("TichuCallsWon")
                         .HasColumnName("tichu_calls_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id")
                         .HasName("pk_player_stats");
@@ -594,17 +597,19 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Round", b =>
                 {
-                    b.Property<string>("RoundId")
+                    b.Property<long>("RoundId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("round_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("BombsTeamOne")
+                    b.Property<long>("BombsTeamOne")
                         .HasColumnName("bombs_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("BombsTeamTwo")
+                    b.Property<long>("BombsTeamTwo")
                         .HasColumnName("bombs_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnName("date_created")
@@ -614,49 +619,49 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("date_ended")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("GameStatsId")
+                    b.Property<long?>("GameStatsId")
                         .HasColumnName("game_stats_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTeamOne")
+                    b.Property<long>("HighCardsTeamOne")
                         .HasColumnName("high_cards_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTeamTwo")
+                    b.Property<long>("HighCardsTeamTwo")
                         .HasColumnName("high_cards_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerFourId")
+                    b.Property<long>("PlayerFourId")
                         .HasColumnName("player_four_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerOneId")
+                    b.Property<long>("PlayerOneId")
                         .HasColumnName("player_one_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerThreeId")
+                    b.Property<long>("PlayerThreeId")
                         .HasColumnName("player_three_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerTwoId")
+                    b.Property<long>("PlayerTwoId")
                         .HasColumnName("player_two_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("ScoreTeamOne")
+                    b.Property<long>("ScoreTeamOne")
                         .HasColumnName("score_team_one")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("ScoreTeamTwo")
+                    b.Property<long>("ScoreTeamTwo")
                         .HasColumnName("score_team_two")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("TeamOneId")
+                    b.Property<long>("TeamOneId")
                         .HasColumnName("team_one_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("TeamTwoId")
+                    b.Property<long>("TeamTwoId")
                         .HasColumnName("team_two_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
                     b.HasKey("RoundId")
                         .HasName("pk_rounds");
@@ -687,9 +692,11 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Team", b =>
                 {
-                    b.Property<string>("TeamId")
+                    b.Property<long>("TeamId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("team_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnName("date_created")
@@ -699,13 +706,13 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("name")
                         .HasColumnType("text");
 
-                    b.Property<string>("PlayerOneId")
+                    b.Property<long>("PlayerOneId")
                         .HasColumnName("player_one_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("PlayerTwoId")
+                    b.Property<long>("PlayerTwoId")
                         .HasColumnName("player_two_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
                     b.HasKey("TeamId")
                         .HasName("pk_teams");
@@ -721,73 +728,75 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.TeamStats", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("BombsTotal")
+                    b.Property<long>("BombsTotal")
                         .HasColumnName("bombs_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.Property<int>("EloRating")
                         .HasColumnName("elo_rating")
                         .HasColumnType("integer");
 
-                    b.Property<int>("GamesTotal")
+                    b.Property<long>("GamesTotal")
                         .HasColumnName("games_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GamesWon")
+                    b.Property<long>("GamesWon")
                         .HasColumnName("games_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsTotal")
+                    b.Property<long>("GrandTichuCallsTotal")
                         .HasColumnName("grand_tichu_calls_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("GrandTichuCallsWon")
+                    b.Property<long>("GrandTichuCallsWon")
                         .HasColumnName("grand_tichu_calls_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("HighCardsTotal")
+                    b.Property<long>("HighCardsTotal")
                         .HasColumnName("high_cards_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("OpponentsBombsTotal")
+                    b.Property<long>("OpponentsBombsTotal")
                         .HasColumnName("opponents_bombs_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("OpponentsHighCardsTotal")
+                    b.Property<long>("OpponentsHighCardsTotal")
                         .HasColumnName("opponents_high_cards_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("PointsWon")
+                    b.Property<long>("PointsWon")
                         .HasColumnName("points_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsDrawn")
+                    b.Property<long>("RoundsDrawn")
                         .HasColumnName("rounds_drawn")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsTotal")
+                    b.Property<long>("RoundsTotal")
                         .HasColumnName("rounds_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoundsWon")
+                    b.Property<long>("RoundsWon")
                         .HasColumnName("rounds_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("TeamId")
+                    b.Property<long>("TeamId")
                         .HasColumnName("team_id")
-                        .HasColumnType("text");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsTotal")
+                    b.Property<long>("TichuCallsTotal")
                         .HasColumnName("tichu_calls_total")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("TichuCallsWon")
+                    b.Property<long>("TichuCallsWon")
                         .HasColumnName("tichu_calls_won")
-                        .HasColumnType("integer");
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id")
                         .HasName("pk_team_stats");
@@ -940,8 +949,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("TichuSensei.Core.Domain.Entities.Round", "Round")
                         .WithMany("Calls")
-                        .HasForeignKey("RoundId")
-                        .HasConstraintName("fk_calls_rounds_round_id");
+                        .HasForeignKey("RoundId1")
+                        .HasConstraintName("fk_calls_rounds_round_id1");
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Game", b =>
@@ -949,45 +958,54 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerFour")
                         .WithMany()
                         .HasForeignKey("PlayerFourId")
-                        .HasConstraintName("fk_games_players_player_four_id");
+                        .HasConstraintName("fk_games_players_player_four_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerOne")
                         .WithMany()
                         .HasForeignKey("PlayerOneId")
-                        .HasConstraintName("fk_games_players_player_one_id");
+                        .HasConstraintName("fk_games_players_player_one_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerThree")
                         .WithMany()
                         .HasForeignKey("PlayerThreeId")
-                        .HasConstraintName("fk_games_players_player_three_id");
+                        .HasConstraintName("fk_games_players_player_three_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerTwo")
                         .WithMany()
                         .HasForeignKey("PlayerTwoId")
-                        .HasConstraintName("fk_games_players_player_two_id");
-
-                    b.HasOne("TichuSensei.Core.Domain.Entities.PlayerStats", "Stats")
-                        .WithMany()
-                        .HasForeignKey("StatsId")
-                        .HasConstraintName("fk_games_player_stats_stats_id");
+                        .HasConstraintName("fk_games_players_player_two_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Team", "TeamOne")
                         .WithMany()
                         .HasForeignKey("TeamOneId")
-                        .HasConstraintName("fk_games_teams_team_one_id");
+                        .HasConstraintName("fk_games_teams_team_one_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Team", "TeamTwo")
                         .WithMany()
                         .HasForeignKey("TeamTwoId")
-                        .HasConstraintName("fk_games_teams_team_two_id");
+                        .HasConstraintName("fk_games_teams_team_two_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.GameStats", b =>
                 {
                     b.HasOne("TichuSensei.Core.Domain.Entities.Game", "Game")
                         .WithMany()
-                        .HasForeignKey("GameId1")
-                        .HasConstraintName("fk_game_stats_games_game_id1");
+                        .HasForeignKey("GameId")
+                        .HasConstraintName("fk_game_stats_games_game_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.PlayerStats", b =>
@@ -995,7 +1013,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "Player")
                         .WithOne("Stats")
                         .HasForeignKey("TichuSensei.Core.Domain.Entities.PlayerStats", "PlayerId")
-                        .HasConstraintName("fk_player_stats_players_player_id");
+                        .HasConstraintName("fk_player_stats_players_player_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Round", b =>
@@ -1008,32 +1028,44 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerFour")
                         .WithMany()
                         .HasForeignKey("PlayerFourId")
-                        .HasConstraintName("fk_rounds_players_player_four_id");
+                        .HasConstraintName("fk_rounds_players_player_four_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerOne")
                         .WithMany()
                         .HasForeignKey("PlayerOneId")
-                        .HasConstraintName("fk_rounds_players_player_one_id");
+                        .HasConstraintName("fk_rounds_players_player_one_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerThree")
                         .WithMany()
                         .HasForeignKey("PlayerThreeId")
-                        .HasConstraintName("fk_rounds_players_player_three_id");
+                        .HasConstraintName("fk_rounds_players_player_three_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerTwo")
                         .WithMany()
                         .HasForeignKey("PlayerTwoId")
-                        .HasConstraintName("fk_rounds_players_player_two_id");
+                        .HasConstraintName("fk_rounds_players_player_two_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Team", "TeamOne")
                         .WithMany()
                         .HasForeignKey("TeamOneId")
-                        .HasConstraintName("fk_rounds_teams_team_one_id");
+                        .HasConstraintName("fk_rounds_teams_team_one_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Team", "TeamTwo")
                         .WithMany()
                         .HasForeignKey("TeamTwoId")
-                        .HasConstraintName("fk_rounds_teams_team_two_id");
+                        .HasConstraintName("fk_rounds_teams_team_two_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Team", b =>
@@ -1041,12 +1073,16 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerOne")
                         .WithMany()
                         .HasForeignKey("PlayerOneId")
-                        .HasConstraintName("fk_teams_players_player_one_id");
+                        .HasConstraintName("fk_teams_players_player_one_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TichuSensei.Core.Domain.Entities.Player", "PlayerTwo")
                         .WithMany()
                         .HasForeignKey("PlayerTwoId")
-                        .HasConstraintName("fk_teams_players_player_two_id");
+                        .HasConstraintName("fk_teams_players_player_two_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.TeamStats", b =>
@@ -1054,7 +1090,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasOne("TichuSensei.Core.Domain.Entities.Team", "Team")
                         .WithOne("Stats")
                         .HasForeignKey("TichuSensei.Core.Domain.Entities.TeamStats", "TeamId")
-                        .HasConstraintName("fk_team_stats_teams_team_id");
+                        .HasConstraintName("fk_team_stats_teams_team_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

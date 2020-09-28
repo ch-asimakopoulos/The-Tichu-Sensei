@@ -12,7 +12,7 @@ namespace TichuSensei.Core.Application.Players.Models.DTOs
         /// <summary>
         /// The player's unique Id.
         /// </summary>
-        public string PlayerId { get; set; }
+        public long PlayerId { get; set; }
         /// <summary>
         /// The application's user that is linked to this player.
         /// </summary>

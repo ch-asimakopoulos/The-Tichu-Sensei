@@ -22,6 +22,7 @@ namespace TichuSensei.Core.Application.Players.Queries
 
         public Kernel.Enums.OrderDirection OrderDirection = Kernel.Enums.OrderDirection.Ascending;
 
+        public Domain.Enums.Player.OrderBy OrderBy = Domain.Enums.Player.OrderBy.Name;
     }
 
     public class GetPlayersWithPaginationQueryHandler : IRequestHandler<GetPlayersWithPaginationQuery, PaginatedList<PlayerDTO>>
@@ -37,13 +38,23 @@ namespace TichuSensei.Core.Application.Players.Queries
 
         public async Task<PaginatedList<PlayerDTO>> Handle(GetPlayersWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            IOrderedQueryable<Domain.Entities.Player> SortedPlayers = request.OrderDirection.Equals(Kernel.Enums.OrderDirection.Ascending) ? _context.Players.AsNoTracking()
-                .OrderBy(x => x.Name) : _context.Players.AsNoTracking()
-                .OrderByDescending(x => x.Name);
 
-            return await SortedPlayers
-                .ProjectTo<PlayerDTO>(_mapper.ConfigurationProvider)
-                .PaginatedListAsync(request.PageNumber, request.PageSize); ;
+            IQueryable<PlayerDTO> playersNoTracking = _context.Players.AsNoTracking().ProjectTo<PlayerDTO>(_mapper.ConfigurationProvider);
+            IOrderedQueryable<PlayerDTO> sortedPlayers;
+            bool sortAsc = request.OrderDirection.Equals(Kernel.Enums.OrderDirection.Ascending);
+
+            if (request.OrderBy.Equals(Domain.Enums.Player.OrderBy.DateCreated))
+            {
+                sortedPlayers = sortAsc ? playersNoTracking.OrderBy(x => x.DateCreated) :
+                        playersNoTracking.OrderByDescending(x => x.DateCreated);
+            }
+            else
+            {
+                sortedPlayers = sortAsc ? playersNoTracking.OrderBy(x => x.Name) :
+                        playersNoTracking.OrderByDescending(x => x.Name);
+            }
+
+            return await playersNoTracking.PaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }
 }

@@ -10,15 +10,15 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id.
         /// </summary>
-        public string CallId { get; set; }
+        public long CallId { get; set; }
         /// <summary>
         /// The player's unique Id.
         /// </summary>
-        public string PlayerId { get; set; }
+        public long PlayerId { get; set; }
         /// <summary>
         /// The team's unique Id.
         /// </summary>
-        public string TeamId { get; set; }
+        public long TeamId { get; set; }
         /// <summary>
         /// The call the player made for this hand. Can be None, Tichu or Grand Tichu.
         /// </summary>

@@ -11,7 +11,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id.
         /// </summary>
-        public string PlayerId { get; set; }
+        public long PlayerId { get; set; }
         /// <summary>
         /// The application's user that is linked to this player.
         /// </summary>

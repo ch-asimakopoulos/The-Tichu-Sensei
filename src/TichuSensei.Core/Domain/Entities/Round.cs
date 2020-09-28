@@ -11,7 +11,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id.
         /// </summary>
-        public string RoundId { get; set; }
+        public long RoundId { get; set; }
         /// <summary>
         /// The date and time this round started.
         /// </summary>
@@ -23,7 +23,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the first team playing in this round.
         /// </summary>
-        public string TeamOneId { get; set; }
+        public long TeamOneId { get; set; }
         /// <summary>
         /// The team object of the first team playing in this round. Will only be computed when needed, via lazy loading.
         /// </summary>
@@ -31,7 +31,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the second team playing in this round.
         /// </summary>
-        public string TeamTwoId { get; set; }
+        public long TeamTwoId { get; set; }
         /// <summary>
         /// The team object of the second team playing in this round. Will only be computed when needed, via lazy loading.
         /// </summary>
@@ -39,7 +39,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the first player playing in this round.
         /// </summary>
-        public string PlayerOneId { get; set; }
+        public long PlayerOneId { get; set; }
         /// <summary>
         /// The player object of the first player playing in this round.
         /// </summary>
@@ -47,7 +47,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the second player playing in this round.
         /// </summary>
-        public string PlayerTwoId { get; set; }
+        public long PlayerTwoId { get; set; }
         /// <summary>
         /// The player object of the second player playing in this round.
         /// </summary>
@@ -55,7 +55,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the third player playing in this round.
         /// </summary>
-        public string PlayerThreeId { get; set; }
+        public long PlayerThreeId { get; set; }
         /// <summary>
         /// The player object of the third player playing in this round.
         /// </summary>
@@ -63,7 +63,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the fourth player playing in this round.
         /// </summary>
-        public string PlayerFourId { get; set; }
+        public long PlayerFourId { get; set; }
         /// <summary>
         /// The player object of the fourth player playing in this round.
         /// </summary>
@@ -75,27 +75,27 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The points the first team won in this round.
         /// </summary>
-        public int ScoreTeamOne { get; set; }
+        public long ScoreTeamOne { get; set; }
         /// <summary>
         /// The points the second team won in this round.
         /// </summary>
-        public int ScoreTeamTwo { get; set; }
+        public long ScoreTeamTwo { get; set; }
         /// <summary>
         /// The total high cards the first team had in its possesion in this round.
         /// </summary>
-        public int HighCardsTeamOne { get; set; }
+        public long HighCardsTeamOne { get; set; }
         /// <summary>
         /// The total high cards the second team had in its possesion in this round.
         /// </summary>
-        public int HighCardsTeamTwo { get; set; }
+        public long HighCardsTeamTwo { get; set; }
         /// <summary>
         /// The total number of bombs the first team had in its possesion in this round.
         /// </summary>
-        public int BombsTeamOne { get; set; }
+        public long BombsTeamOne { get; set; }
         /// <summary>
         /// The total number of bombs the second team had in its possesion in this round.
         /// </summary>
-        public int BombsTeamTwo { get; set; }
+        public long BombsTeamTwo { get; set; }
 
     }
 }

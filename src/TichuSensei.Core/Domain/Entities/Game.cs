@@ -10,7 +10,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique Id.
         /// </summary>
-        public string GameId { get; set; }
+        public long GameId { get; set; }
         /// <summary>
         /// Mercy Rule setting for this game. Mercy rule states that a game will end if the difference of the teams score exceeds 1000 at any time.
         /// </summary>
@@ -30,7 +30,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the first team playing in this game.
         /// </summary>
-        public string TeamOneId { get; set; }
+        public long TeamOneId { get; set; }
         /// <summary>
         /// The team object of the first team playing in this game. Will only be computed when needed, via lazy loading.
         /// </summary>
@@ -38,7 +38,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the second team playing in this game.
         /// </summary>
-        public string TeamTwoId { get; set; }
+        public long TeamTwoId { get; set; }
         /// <summary>
         /// The team object of the second team playing in this game. Will only be computed when needed, via lazy loading.
         /// </summary>
@@ -46,7 +46,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the first player playing in this round.
         /// </summary>
-        public string PlayerOneId { get; set; }
+        public long PlayerOneId { get; set; }
         /// <summary>
         /// The player object of the first player playing in this round.
         /// </summary>
@@ -54,7 +54,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the second player playing in this game.
         /// </summary>
-        public string PlayerTwoId { get; set; }
+        public long PlayerTwoId { get; set; }
         /// <summary>
         /// The player object of the second player playing in this game.
         /// </summary>
@@ -62,7 +62,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the third player playing in this game.
         /// </summary>
-        public string PlayerThreeId { get; set; }
+        public long PlayerThreeId { get; set; }
         /// <summary>
         /// The player object of the third player playing in this game.
         /// </summary>
@@ -70,7 +70,7 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The unique id of the fourth player playing in this game.
         /// </summary>
-        public string PlayerFourId { get; set; }
+        public long PlayerFourId { get; set; }
         /// <summary>
         /// The player object of the fourth player playing in this game.
         /// </summary>
