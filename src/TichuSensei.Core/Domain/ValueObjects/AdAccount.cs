@@ -13,11 +13,11 @@ namespace TichuSensei.Core.Domain.ValueObjects
 
         public static AdAccount For(string accountString)
         {
-            var account = new AdAccount();
+            AdAccount account = new AdAccount();
 
             try
             {
-                var index = accountString.IndexOf("\\", StringComparison.Ordinal);
+                int index = accountString.IndexOf("\\", StringComparison.Ordinal);
                 account.Domain = accountString.Substring(0, index);
                 account.Name = accountString.Substring(index + 1);
             }
@@ -33,20 +33,11 @@ namespace TichuSensei.Core.Domain.ValueObjects
 
         public string Name { get; private set; }
 
-        public static implicit operator string(AdAccount account)
-        {
-            return account.ToString();
-        }
+        public static implicit operator string(AdAccount account) => account.ToString();
 
-        public static explicit operator AdAccount(string accountString)
-        {
-            return For(accountString);
-        }
+        public static explicit operator AdAccount(string accountString) => For(accountString);
 
-        public override string ToString()
-        {
-            return $"{Domain}\\{Name}";
-        }
+        public override string ToString() => $"{Domain}\\{Name}";
 
         protected override IEnumerable<object> GetAtomicValues()
         {

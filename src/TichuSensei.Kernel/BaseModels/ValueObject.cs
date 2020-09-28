@@ -16,10 +16,7 @@ namespace TichuSensei.Kernel.BaseModels
             return left?.Equals(right) != false;
         }
 
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
-        {
-            return !(EqualOperator(left, right));
-        }
+        protected static bool NotEqualOperator(ValueObject left, ValueObject right) => !(EqualOperator(left, right));
 
         protected abstract IEnumerable<object> GetAtomicValues();
 
@@ -30,9 +27,9 @@ namespace TichuSensei.Kernel.BaseModels
                 return false;
             }
 
-            var other = (ValueObject)obj;
-            var thisValues = GetAtomicValues().GetEnumerator();
-            var otherValues = other.GetAtomicValues().GetEnumerator();
+            ValueObject other = (ValueObject)obj;
+            IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
+            IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
 
             while (thisValues.MoveNext() && otherValues.MoveNext())
             {

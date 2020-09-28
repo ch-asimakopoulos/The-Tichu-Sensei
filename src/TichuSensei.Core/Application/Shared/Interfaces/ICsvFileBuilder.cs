@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TichuSensei.Core.Application.Shared.Interfaces
+﻿namespace TichuSensei.Core.Application.Shared.Interfaces
 {
     public interface ICsvFileBuilder
     {

@@ -10,10 +10,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
     {
         private readonly ILogger _logger;
 
-        public UnhandledExceptionBehaviour(ILogger logger)
-        {
-            _logger = logger;
-        }
+        public UnhandledExceptionBehaviour(ILogger logger) => _logger = logger;
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
@@ -23,7 +20,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
             }
             catch (Exception ex)
             {
-                var requestName = typeof(TRequest).Name;
+                string requestName = typeof(TRequest).Name;
 
                 _logger.Error(ex, "TichuSensei Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
 

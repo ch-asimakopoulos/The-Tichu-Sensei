@@ -7,8 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Players.Models.DTOs;
 using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Core.Application.Shared.Mappings;
-using TichuSensei.Core.Application.Shared.Models;
 
 namespace TichuSensei.Core.Application.Players.Queries
 {

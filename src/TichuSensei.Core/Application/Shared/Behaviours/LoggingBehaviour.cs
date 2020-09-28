@@ -1,8 +1,8 @@
-﻿using TichuSensei.Core.Application.Shared.Interfaces;
-using MediatR.Pipeline;
+﻿using MediatR.Pipeline;
 using Serilog;
 using System.Threading;
 using System.Threading.Tasks;
+using TichuSensei.Core.Application.Shared.Interfaces;
 
 namespace TichuSensei.Core.Application.Shared.Behaviours
 {
@@ -21,8 +21,8 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
 
         public async Task Process(TRequest request, CancellationToken cancellationToken)
         {
-            var requestName = typeof(TRequest).Name;
-            var userId = _currentUserService.UserId ?? string.Empty;
+            string requestName = typeof(TRequest).Name;
+            string userId = _currentUserService.UserId ?? string.Empty;
             string userName = string.Empty;
 
             if (!string.IsNullOrEmpty(userId))

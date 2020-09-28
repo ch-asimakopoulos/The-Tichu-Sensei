@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TichuSensei.Core.Domain.Enums.Player
+﻿namespace TichuSensei.Core.Domain.Enums.Player
 {
     public enum OrderBy
     {

@@ -54,8 +54,8 @@ namespace TichuSensei.Core.Application.Shared.Models
         /// <returns>A task that represents the asynchronous operation. The task result containts a Paginated List with elements corresponding to the provided page index and page size.</returns>
         public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)
         {
-            var count = await source.CountAsync();
-            var items = await source.Skip((pageIndex - 1) * pageSize)
+            int count = await source.CountAsync();
+            List<T> items = await source.Skip((pageIndex - 1) * pageSize)
                                     .Take(pageSize)
                                     .ToListAsync();
 

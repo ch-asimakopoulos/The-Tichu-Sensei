@@ -1,5 +1,5 @@
-﻿using TichuSensei.Core.Application.Shared.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using TichuSensei.Core.Application.Shared.Models;
 
 namespace TichuSensei.Core.Application.Shared.Interfaces
 {

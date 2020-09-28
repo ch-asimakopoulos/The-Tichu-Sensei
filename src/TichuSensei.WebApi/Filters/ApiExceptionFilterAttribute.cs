@@ -1,9 +1,9 @@
-﻿using TichuSensei.Core.Application.Shared.Exceptions;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
+using TichuSensei.Core.Application.Shared.Exceptions;
 
 namespace TichuSensei.WebApi.Filters
 {
@@ -49,7 +49,7 @@ namespace TichuSensei.WebApi.Filters
 
         private void HandleUnknownException(ExceptionContext context)
         {
-            var details = new ProblemDetails
+            ProblemDetails details = new ProblemDetails
             {
                 Status = StatusCodes.Status500InternalServerError,
                 Title = "An error occurred while processing your request.",
@@ -66,9 +66,9 @@ namespace TichuSensei.WebApi.Filters
 
         private void HandleValidationException(ExceptionContext context)
         {
-            var exception = context.Exception as ValidationException;
+            ValidationException exception = context.Exception as ValidationException;
 
-            var details = new ValidationProblemDetails(exception.Errors)
+            ValidationProblemDetails details = new ValidationProblemDetails(exception.Errors)
             {
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
@@ -80,7 +80,7 @@ namespace TichuSensei.WebApi.Filters
 
         private void HandleInvalidModelStateException(ExceptionContext context)
         {
-            var details = new ValidationProblemDetails(context.ModelState)
+            ValidationProblemDetails details = new ValidationProblemDetails(context.ModelState)
             {
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
             };
@@ -92,9 +92,9 @@ namespace TichuSensei.WebApi.Filters
 
         private void HandleNotFoundException(ExceptionContext context)
         {
-            var exception = context.Exception as NotFoundException;
+            NotFoundException exception = context.Exception as NotFoundException;
 
-            var details = new ProblemDetails()
+            ProblemDetails details = new ProblemDetails()
             {
                 Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
                 Title = "The specified resource was not found.",

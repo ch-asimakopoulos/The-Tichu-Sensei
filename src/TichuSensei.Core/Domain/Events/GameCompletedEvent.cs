@@ -5,10 +5,7 @@ namespace TichuSensei.Core.Domain.Events
 {
     public class GameCompletedEvent : DomainEvent
     {
-        public GameCompletedEvent(Game game)
-        {
-            Game = game;
-        }
+        public GameCompletedEvent(Game game) => Game = game;
 
         public Game Game { get; }
     }

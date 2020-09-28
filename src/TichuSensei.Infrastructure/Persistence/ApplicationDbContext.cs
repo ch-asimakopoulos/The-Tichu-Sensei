@@ -101,12 +101,12 @@ namespace TichuSensei.Infrastructure.Persistence
 
         private async Task DispatchEvents(CancellationToken cancellationToken)
         {
-            var domainEventEntities = ChangeTracker.Entries<IHasDomainEvent>()
+            DomainEvent[] domainEventEntities = ChangeTracker.Entries<IHasDomainEvent>()
                 .Select(x => x.Entity.DomainEvents)
                 .SelectMany(x => x)
                 .ToArray();
 
-            foreach (var domainEvent in domainEventEntities)
+            foreach (DomainEvent domainEvent in domainEventEntities)
             {
                 await _domainEventService.Publish(domainEvent);
             }

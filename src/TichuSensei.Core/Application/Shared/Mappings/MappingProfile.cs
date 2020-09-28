@@ -7,23 +7,20 @@ namespace TichuSensei.Core.Application.Shared.Mappings
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile()
-        {
-            ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+        public MappingProfile() => ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
 
         private void ApplyMappingsFromAssembly(Assembly assembly)
         {
-            var types = assembly.GetExportedTypes()
+            System.Collections.Generic.List<Type> types = assembly.GetExportedTypes()
                 .Where(t => t.GetInterfaces().Any(i =>
                     i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
                 .ToList();
 
-            foreach (var type in types)
+            foreach (Type type in types)
             {
-                var instance = Activator.CreateInstance(type);
+                object instance = Activator.CreateInstance(type);
 
-                var methodInfo = type.GetMethod("Mapping")
+                MethodInfo methodInfo = type.GetMethod("Mapping")
                     ?? type.GetInterface("IMapFrom`1").GetMethod("Mapping");
 
                 methodInfo?.Invoke(instance, new object[] { this });

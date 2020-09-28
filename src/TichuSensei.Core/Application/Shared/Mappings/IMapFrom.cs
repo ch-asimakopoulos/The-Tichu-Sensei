@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration.Conventions;
 using TichuSensei.Core.Application.Players.Models.DTOs;
 using TichuSensei.Core.Domain.Entities;
 

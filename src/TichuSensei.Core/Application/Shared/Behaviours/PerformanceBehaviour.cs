@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Serilog;
-using TichuSensei.Core.Application.Shared.Interfaces;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using TichuSensei.Core.Application.Shared.Interfaces;
 
 namespace TichuSensei.Core.Application.Shared.Behaviours
 {
@@ -15,7 +15,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
         private readonly IIdentityService _identityService;
 
         public PerformanceBehaviour(
-            ILogger logger, 
+            ILogger logger,
             ICurrentUserService currentUserService,
             IIdentityService identityService)
         {
@@ -30,17 +30,17 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
         {
             _timer.Start();
 
-            var response = await next();
+            TResponse response = await next();
 
             _timer.Stop();
 
-            var elapsedMilliseconds = _timer.ElapsedMilliseconds;
+            long elapsedMilliseconds = _timer.ElapsedMilliseconds;
 
             if (elapsedMilliseconds > Kernel.Consts.Logging.ElapsedMillisecondLimitForLoggingSlowRequests)
             {
-                var requestName = typeof(TRequest).Name;
-                var userId = _currentUserService.UserId ?? string.Empty;
-                var userName = string.Empty;
+                string requestName = typeof(TRequest).Name;
+                string userId = _currentUserService.UserId ?? string.Empty;
+                string userName = string.Empty;
 
                 if (!string.IsNullOrEmpty(userId))
                 {

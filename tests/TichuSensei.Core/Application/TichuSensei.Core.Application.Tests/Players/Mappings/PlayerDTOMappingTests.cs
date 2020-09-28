@@ -15,7 +15,7 @@ namespace TichuSensei.Core.Application.Tests.Players.Mappings
         [Fact]
         public void MapFromPlayerToPlayerDTO()
         {
-            var configuration = new MapperConfiguration(cfg =>
+            MapperConfiguration configuration = new MapperConfiguration(cfg =>
                                 cfg.CreateMap<Player, Application.Players.Models.DTOs.PlayerDTO>());
 
             configuration.AssertConfigurationIsValid();

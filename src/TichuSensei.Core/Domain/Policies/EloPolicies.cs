@@ -18,10 +18,7 @@ namespace TichuSensei.Core.Domain.Policies
             /// </summary>
             /// <param name="player">The player whose eligibility will be checked.</param>
             /// <returns>A boolean value determining if the player is eligible or not.</returns>
-            public static bool IsEloRankingEligible(Player player)
-            {
-                return player.Stats.GamesTotal >= Kernel.Consts.Elo.MinGamesForEligibility;
-            }
+            public static bool IsEloRankingEligible(Player player) => player.Stats.GamesTotal >= Kernel.Consts.Elo.MinGamesForEligibility;
 
             /// <summary>
             /// Conforms an Elo change for a player to the minimum and maximum changes allowed.
@@ -48,10 +45,7 @@ namespace TichuSensei.Core.Domain.Policies
             /// </summary>
             /// <param name="team">The team whose eligibility will be checked.</param>
             /// <returns>A boolean value determining if the team is eligible or not.</returns>
-            public static bool IsEloRankingEligible(Team team)
-            {
-                return team.Stats.GamesTotal >= Kernel.Consts.Elo.MinGamesForEligibility;
-            }
+            public static bool IsEloRankingEligible(Team team) => team.Stats.GamesTotal >= Kernel.Consts.Elo.MinGamesForEligibility;
 
             /// <summary>
             /// Conforms an Elo change for a team to the minimum and maximum changes allowed.

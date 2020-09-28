@@ -9,7 +9,7 @@ namespace TichuSensei.Infrastructure.Persistence
     {
         public static async Task SeedDefaultUserAsync(UserManager<ApplicationUser> userManager)
         {
-            var defaultUser = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
+            ApplicationUser defaultUser = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
 
             if (userManager.Users.All(u => u.UserName != defaultUser.UserName))
             {
@@ -17,13 +17,10 @@ namespace TichuSensei.Infrastructure.Persistence
             }
         }
 
-        public static async Task SeedSampleDataAsync(ApplicationDbContext context)
-        {
+        public static async Task SeedSampleDataAsync(ApplicationDbContext context) =>
             // Seed, if necessary
 
             await context.SaveChangesAsync();
-
-        }
 
     }
 }
