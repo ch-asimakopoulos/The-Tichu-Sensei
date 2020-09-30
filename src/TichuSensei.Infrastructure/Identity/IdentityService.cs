@@ -36,12 +36,7 @@ namespace TichuSensei.Infrastructure.Identity
         {
             ApplicationUser user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
 
-            if (user != null)
-            {
-                return await DeleteUserAsync(user);
-            }
-
-            return Result.Success();
+            return user != null ? await DeleteUserAsync(user) : Result.Success();
         }
 
         public async Task<Result> DeleteUserAsync(ApplicationUser user)

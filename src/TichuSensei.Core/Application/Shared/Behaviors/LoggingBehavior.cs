@@ -4,15 +4,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
 
-namespace TichuSensei.Core.Application.Shared.Behaviours
+namespace TichuSensei.Core.Application.Shared.Behaviors
 {
-    public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>
+    public class LoggingBehavior<TRequest> : IRequestPreProcessor<TRequest>
     {
         private readonly ILogger _logger;
         private readonly ICurrentUserService _currentUserService;
         private readonly IIdentityService _identityService;
 
-        public LoggingBehaviour(ILogger logger, ICurrentUserService currentUserService, IIdentityService identityService)
+        public LoggingBehavior(ILogger logger, ICurrentUserService currentUserService, IIdentityService identityService)
         {
             _logger = logger;
             _currentUserService = currentUserService;

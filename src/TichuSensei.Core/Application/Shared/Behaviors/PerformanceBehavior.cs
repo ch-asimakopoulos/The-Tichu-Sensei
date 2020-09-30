@@ -5,16 +5,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
 
-namespace TichuSensei.Core.Application.Shared.Behaviours
+namespace TichuSensei.Core.Application.Shared.Behaviors
 {
-    public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly Stopwatch _timer;
         private readonly ILogger _logger;
         private readonly ICurrentUserService _currentUserService;
         private readonly IIdentityService _identityService;
 
-        public PerformanceBehaviour(
+        public PerformanceBehavior(
             ILogger logger,
             ICurrentUserService currentUserService,
             IIdentityService identityService)
@@ -42,7 +42,7 @@ namespace TichuSensei.Core.Application.Shared.Behaviours
                 string userId = _currentUserService.UserId ?? string.Empty;
                 string userName = string.Empty;
 
-                if (!string.IsNullOrEmpty(userId))
+                if (!string.IsNullOrWhiteSpace(userId))
                 {
                     userName = await _identityService.GetUserNameAsync(userId);
                 }

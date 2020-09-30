@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {
     /// <summary>
     /// The game stats of a Tichu game.
     /// </summary>
-    public class GameStats
+    public class GameStats : TrackingChangesEntity
     {
         /// <summary>
         /// The unique id. 

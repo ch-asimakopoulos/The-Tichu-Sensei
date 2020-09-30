@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using TichuSensei.Core.Application.Players.Queries;
 
-namespace TichuSensei.Core.Application.Players.Models.Validators
+namespace TichuSensei.Core.Application.Players.Queries.Validators
 {
     public class GetPlayersWithPaginationQueryValidator : AbstractValidator<GetPlayersWithPaginationQuery>
     {

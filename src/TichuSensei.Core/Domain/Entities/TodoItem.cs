@@ -6,7 +6,7 @@ using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {
-    public class TodoItem : AuditableEntity, IHasDomainEvent
+    public class TodoItem : TrackingChangesEntity, IHasDomainEvent
     {
         public int Id { get; set; }
 

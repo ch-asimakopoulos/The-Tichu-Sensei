@@ -12,7 +12,7 @@ namespace TichuSensei.Core.Application.Shared.Mappings
             if (GetType().Equals(o: new PlayerEloRankingsDTO()))
             {
                 profile.CreateMap<Player, PlayerEloRankingsDTO>()
-                .ForMember(dto => dto.PlayerEloRankings, o => o.MapFrom(ch => ch.Stats));
+                .ForMember(dto => dto.PlayerEloRankings, o => o.MapFrom(pl => pl.Stats));
                 return;
             }
 

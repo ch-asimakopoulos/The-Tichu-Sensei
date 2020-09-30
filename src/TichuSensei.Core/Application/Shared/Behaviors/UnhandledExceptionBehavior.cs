@@ -4,13 +4,13 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TichuSensei.Core.Application.Shared.Behaviours
+namespace TichuSensei.Core.Application.Shared.Behaviors
 {
-    public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class UnhandledExceptionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly ILogger _logger;
 
-        public UnhandledExceptionBehaviour(ILogger logger) => _logger = logger;
+        public UnhandledExceptionBehavior(ILogger logger) => _logger = logger;
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {

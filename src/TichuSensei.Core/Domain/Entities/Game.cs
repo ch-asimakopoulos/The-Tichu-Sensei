@@ -1,11 +1,12 @@
 ﻿using System;
+using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {
     /// <summary>
     /// A Tichu game.
     /// </summary>
-    public class Game
+    public class Game : TrackingChangesEntity
     {
         /// <summary>
         /// The unique Id.
@@ -19,14 +20,6 @@ namespace TichuSensei.Core.Domain.Entities
         /// States if the game is over, or is still under way.
         /// </summary>
         public bool GameOver { get; set; }
-        /// <summary>
-        /// The date and time this game started.
-        /// </summary>
-        public DateTime DateCreated { get; set; }
-        /// <summary>
-        /// The date and time this game ended. Value can be null if the game is still in progress.
-        /// </summary>
-        public DateTime? DateEnded { get; set; }
         /// <summary>
         /// The unique id of the first team playing in this game.
         /// </summary>

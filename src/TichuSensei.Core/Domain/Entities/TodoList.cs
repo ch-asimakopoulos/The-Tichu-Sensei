@@ -3,7 +3,7 @@ using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
 {
-    public class TodoList : AuditableEntity
+    public class TodoList : TrackingChangesEntity
     {
         public int Id { get; set; }
 
