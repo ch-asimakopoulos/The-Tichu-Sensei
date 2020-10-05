@@ -42,7 +42,7 @@ namespace TichuSensei.Core.Application.Players.Commands.Validators
 
         public bool UserExists(string userId) => _currentUserService.UserId == userId;
 
-        public bool CheckURLEmptyOrValid(string avatarUrl) {
+        public static bool CheckURLEmptyOrValid(string avatarUrl) {
             if (!(string.IsNullOrEmpty(avatarUrl) || (Uri.TryCreate(avatarUrl, UriKind.Absolute, out Uri uriResult) && uriResult.Scheme == Uri.UriSchemeHttps)))
                  return false;
             // Initialize the request

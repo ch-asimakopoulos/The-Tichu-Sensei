@@ -1,15 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Players.Commands.Update;
 using TichuSensei.Core.Application.Shared.Interfaces;
-using TichuSensei.Core.Domain.Entities;
 
 namespace TichuSensei.Core.Application.Players.Commands.Validators
 {
@@ -25,7 +21,7 @@ namespace TichuSensei.Core.Application.Players.Commands.Validators
 
             RuleFor(v => v.Id)
                 .NotEmpty().GreaterThan(0).WithMessage("A player Id is required.")
-                .MustAsync(PlayerWasCreatedByThisUser).WithMessage("The player specified cannot be deleted by the current user.");
+                .MustAsync(PlayerWasCreatedByThisUser).WithMessage("The player specified cannot be updated by the current user.");
 
         }
 

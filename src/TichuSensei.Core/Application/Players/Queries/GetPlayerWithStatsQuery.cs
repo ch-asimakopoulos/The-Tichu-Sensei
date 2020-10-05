@@ -33,7 +33,7 @@ namespace TichuSensei.Core.Application.Players.Queries
         public async Task<PlayerWithStatsDTO> Handle(GetPlayerWithStatsQuery request, CancellationToken cancellationToken)
         {
             return await _context.Players.AsNoTracking().Where(ch => ch.PlayerId == request.id)
-                .ProjectTo<PlayerWithStatsDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
+                .ProjectTo<PlayerWithStatsDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync(cancellationToken: cancellationToken);
         }
     }
 }
