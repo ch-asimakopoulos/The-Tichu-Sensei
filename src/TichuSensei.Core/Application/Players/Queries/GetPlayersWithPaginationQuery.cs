@@ -54,7 +54,7 @@ namespace TichuSensei.Core.Application.Players.Queries
                         playersNoTracking.OrderByDescending(x => x.Name);
             }
 
-            return await playersNoTracking.PaginatedListAsync(request.PageNumber, request.PageSize);
+            return await sortedPlayers.PaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }
 }

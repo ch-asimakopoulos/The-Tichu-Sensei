@@ -1,11 +1,13 @@
-﻿using TichuSensei.Core.Domain.Enums;
+﻿using TichuSensei.Core.Application.Shared.Mappings;
+using TichuSensei.Core.Domain.Entities;
+using TichuSensei.Core.Domain.Enums;
 
-namespace TichuSensei.Core.Domain.Entities
+namespace TichuSensei.Core.Application.Calls.Models.DTOs
 {
     /// <summary>
-    /// A class describing whether a player called Tichu or Grand Tichu on a particular hand.
+    /// A Call Data Transfer Object. It does not include the Round object.
     /// </summary>
-    public class Call
+    public class CallDTO : IMapFrom<Call>
     {
         /// <summary>
         /// The unique Id.
@@ -30,10 +32,6 @@ namespace TichuSensei.Core.Domain.Entities
         /// <summary>
         /// The round's unique Id.
         /// </summary>
-        public long RoundId { get; set; }
-        /// <summary>
-        /// The round's object. Will only be computed when needed, via lazy loading.
-        /// </summary>
-        public virtual Round Round { get; set; }
-    }
+        public string RoundId { get; set; }
+        
 }

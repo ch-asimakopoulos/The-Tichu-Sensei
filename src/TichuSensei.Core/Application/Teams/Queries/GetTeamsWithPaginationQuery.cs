@@ -54,7 +54,7 @@ namespace TichuSensei.Core.Application.Teams.Queries
                         TeamsNoTracking.OrderByDescending(x => x.Name);
             }
 
-            return await TeamsNoTracking.PaginatedListAsync(request.PageNumber, request.PageSize);
+            return await sortedTeams.PaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }
 }

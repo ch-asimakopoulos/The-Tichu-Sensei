@@ -50,11 +50,9 @@ namespace TichuSensei.Core.Application.Players.Commands.Validators
             request.Method = "HEAD";
 
             // Get the response
-            using (WebResponse resp = request.GetResponse())
-            {
-                return resp.ContentType.ToLower(CultureInfo.InvariantCulture)
-                           .StartsWith("image/");
-            }
+            using WebResponse resp = request.GetResponse();
+            return resp.ContentType.ToLower(CultureInfo.InvariantCulture)
+                       .StartsWith("image/");
 
         }
     }
