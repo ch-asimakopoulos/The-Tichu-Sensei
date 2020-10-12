@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 namespace TichuSensei.Infrastructure.Persistence.Migrations
 {
@@ -271,10 +271,12 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 {
                     game_id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    date_created = table.Column<DateTime>(nullable: false),
+                    created_by = table.Column<string>(nullable: true),
+                    date_last_modified = table.Column<DateTime>(nullable: true),
+                    last_modified_by = table.Column<string>(nullable: true),
                     mercy_rule = table.Column<bool>(nullable: false),
                     game_over = table.Column<bool>(nullable: false),
-                    date_created = table.Column<DateTime>(nullable: false),
-                    date_ended = table.Column<DateTime>(nullable: true),
                     team_one_id = table.Column<long>(nullable: false),
                     team_two_id = table.Column<long>(nullable: false),
                     player_one_id = table.Column<long>(nullable: false),
@@ -363,6 +365,10 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 {
                     id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    date_created = table.Column<DateTime>(nullable: false),
+                    created_by = table.Column<string>(nullable: true),
+                    date_last_modified = table.Column<DateTime>(nullable: true),
+                    last_modified_by = table.Column<string>(nullable: true),
                     rounds_total = table.Column<long>(nullable: false),
                     rounds_won_team_one = table.Column<long>(nullable: false),
                     rounds_won_team_two = table.Column<long>(nullable: false),
@@ -470,18 +476,17 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     team_id = table.Column<long>(nullable: false),
                     call_type = table.Column<int>(nullable: false),
                     success = table.Column<bool>(nullable: true),
-                    round_id = table.Column<string>(nullable: true),
-                    round_id1 = table.Column<long>(nullable: true)
+                    round_id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_calls", x => x.call_id);
                     table.ForeignKey(
-                        name: "fk_calls_rounds_round_id1",
-                        column: x => x.round_id1,
+                        name: "fk_calls_rounds_round_id",
+                        column: x => x.round_id,
                         principalTable: "rounds",
                         principalColumn: "round_id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -522,9 +527,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "ix_calls_round_id1",
+                name: "ix_calls_round_id",
                 table: "calls",
-                column: "round_id1");
+                column: "round_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_device_codes_device_code",

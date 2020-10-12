@@ -33,5 +33,6 @@ namespace TichuSensei.Core.Application.Calls.Models.DTOs
         /// The round's unique Id.
         /// </summary>
         public string RoundId { get; set; }
-        
+    }    
 }
+

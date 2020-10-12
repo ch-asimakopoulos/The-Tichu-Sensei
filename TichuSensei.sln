@@ -64,7 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.WebApi.Tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".migrationcommands", ".migrationcommands", "{A17DE214-F9CE-41B8-9832-5FC942F69717}"
 	ProjectSection(SolutionItems) = preProject
-		initialMigration.txt = initialMigration.txt
+		initialMigration.md = initialMigration.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TichuSensei.Kernel", "src\TichuSensei.Kernel\TichuSensei.Kernel.csproj", "{C3F3C19F-E30C-49D7-96EA-A0837C059D52}"

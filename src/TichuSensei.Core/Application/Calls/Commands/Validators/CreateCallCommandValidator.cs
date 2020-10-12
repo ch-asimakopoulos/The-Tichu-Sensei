@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Primitives;
 using System.Linq;
 using TichuSensei.Core.Application.Calls.Commands.Create;
 using TichuSensei.Core.Application.Shared.Interfaces;
@@ -10,17 +11,16 @@ namespace TichuSensei.Core.Application.Calls.Commands.Validators
     {
         private readonly IApplicationDbContext _context;
         private readonly ICurrentUserService _currentUserService;
-        private readonly Round _round;
+        private Round _round;
 
-        public CreateCallCommandValidator(IApplicationDbContext context, ICurrentUserService currentUserService, long roundId)
+        public CreateCallCommandValidator(IApplicationDbContext context, ICurrentUserService currentUserService)
         {
             _context = context;
             _currentUserService = currentUserService;
-            _round = _context.Rounds.Where(rd => roundId == rd.RoundId).FirstOrDefault();
 
             RuleFor(v => v.RoundId)
                 .NotEmpty().WithMessage("Providing a round is required.")
-                .Must(rd => _round != null && _round.RoundId == rd).WithMessage("The round specified does not exist.");
+                .Must(RoundExists).WithMessage("The round specified does not exist.");
 
             RuleFor(v => v.UserId)
                 .NotEmpty().WithMessage("Being a user is required.")
@@ -41,5 +41,9 @@ namespace TichuSensei.Core.Application.Calls.Commands.Validators
 
         public bool UserExists(string userId) => _currentUserService.UserId == userId;
 
+        public bool RoundExists(long roundId) {
+            _round = _context.Rounds.Where(rd => roundId == rd.RoundId).FirstOrDefault();
+            return _round != null;
+        }
     }
 }

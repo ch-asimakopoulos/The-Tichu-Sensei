@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Calls\Models\Views\" />
-    <Folder Include="Calls\Queries\Validators\" />
     <Folder Include="Teams\Models\Views\" />
     <Folder Include="Players\Models\Views\" />
   </ItemGroup>

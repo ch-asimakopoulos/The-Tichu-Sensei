@@ -10,7 +10,7 @@ using TichuSensei.Infrastructure.Persistence;
 namespace TichuSensei.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200928213829_initialPgsqlMigration")]
+    [Migration("20201012061718_initialPgsqlMigration")]
     partial class initialPgsqlMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,7 +18,7 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -305,12 +305,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("player_id")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("RoundId")
+                    b.Property<long>("RoundId")
                         .HasColumnName("round_id")
-                        .HasColumnType("text");
-
-                    b.Property<long?>("RoundId1")
-                        .HasColumnName("round_id1")
                         .HasColumnType("bigint");
 
                     b.Property<bool?>("Success")
@@ -324,8 +320,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.HasKey("CallId")
                         .HasName("pk_calls");
 
-                    b.HasIndex("RoundId1")
-                        .HasName("ix_calls_round_id1");
+                    b.HasIndex("RoundId")
+                        .HasName("ix_calls_round_id");
 
                     b.ToTable("calls");
                 });
@@ -338,17 +334,25 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnName("created_by")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnName("date_created")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime?>("DateEnded")
-                        .HasColumnName("date_ended")
+                    b.Property<DateTime?>("DateLastModified")
+                        .HasColumnName("date_last_modified")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("GameOver")
                         .HasColumnName("game_over")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnName("last_modified_by")
+                        .HasColumnType("text");
 
                     b.Property<bool>("MercyRule")
                         .HasColumnName("mercy_rule")
@@ -418,6 +422,18 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("bombs_total_team_two")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnName("created_by")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnName("date_created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime?>("DateLastModified")
+                        .HasColumnName("date_last_modified")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<long>("GameId")
                         .HasColumnName("game_id")
                         .HasColumnType("bigint");
@@ -445,6 +461,10 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     b.Property<long>("HighCardsTotalTeamTwo")
                         .HasColumnName("high_cards_total_team_two")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnName("last_modified_by")
+                        .HasColumnType("text");
 
                     b.Property<long>("RoundsTotal")
                         .HasColumnName("rounds_total")
@@ -949,8 +969,10 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("TichuSensei.Core.Domain.Entities.Round", "Round")
                         .WithMany("Calls")
-                        .HasForeignKey("RoundId1")
-                        .HasConstraintName("fk_calls_rounds_round_id1");
+                        .HasForeignKey("RoundId")
+                        .HasConstraintName("fk_calls_rounds_round_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Game", b =>
