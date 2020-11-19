@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TichuSensei.Kernel.BaseModels;
 
 namespace TichuSensei.Core.Domain.Entities
@@ -68,6 +69,14 @@ namespace TichuSensei.Core.Domain.Entities
         /// The player object of the fourth player playing in this game.
         /// </summary>
         public Player PlayerFour { get; set; }
+        /// <summary>
+        ///  The statistics for this game. Will only be computed when needed, via lazy loading.
+        /// </summary>
+        public virtual GameStats Stats { get; set; }
+        /// <summary>
+        /// A list of all the rounds this game had. Will only be computed when needed, via lazy loading.
+        /// </summary>
+        public virtual ICollection<Round> Rounds { get; set; } 
 
 
     }

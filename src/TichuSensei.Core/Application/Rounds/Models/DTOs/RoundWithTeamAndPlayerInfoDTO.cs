@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using TichuSensei.Core.Application.Calls.Models.DTOs;
+using TichuSensei.Core.Application.Players.Models.DTOs;
+using TichuSensei.Core.Application.Shared.Mappings;
+using TichuSensei.Core.Application.Teams.Models.DTOs;
+using TichuSensei.Core.Domain.Entities;
 
-namespace TichuSensei.Core.Domain.Entities
+namespace TichuSensei.Core.Application.Rounds.Models.DTOs
 {
     /// <summary>
-    /// A round of a game of Tichu.
+    /// A Round Data Transfer Object. It does include the team and player's statistics.
     /// </summary>
-    public class Round
+    public class RoundWithTeamAndPlayerInfoDTO : IMapFrom<Round>
     {
         /// <summary>
         /// The unique Id.
@@ -20,67 +25,58 @@ namespace TichuSensei.Core.Domain.Entities
         /// The date and time this round ended. Value can be null if the round is still in progress.
         /// </summary>
         public DateTime? DateEnded { get; set; }
-
-        /// <summary>
-        /// The unique id of the game in which this round was played
-        /// </summary>
-        public long GameId { get; set; }
-        /// <summary>
-        /// The game in which this round was played
-        /// </summary>
-        public Game Game { get; set; }
         /// <summary>
         /// The unique id of the first team playing in this round.
         /// </summary>
         public long TeamOneId { get; set; }
         /// <summary>
-        /// The team object of the first team playing in this round. Will only be computed when needed, via lazy loading.
+        /// The team data transfer object of the first team playing in this round.
         /// </summary>
-        public virtual Team TeamOne { get; set; }
+        public TeamWithStatsDTO TeamOne { get; set; }
         /// <summary>
         /// The unique id of the second team playing in this round.
         /// </summary>
         public long TeamTwoId { get; set; }
         /// <summary>
-        /// The team object of the second team playing in this round. Will only be computed when needed, via lazy loading.
+        /// The team data transfer object of the second team playing in this round.
         /// </summary>
-        public virtual Team TeamTwo { get; set; }
+        public TeamWithStatsDTO TeamTwo { get; set; }
         /// <summary>
         /// The unique id of the first player playing in this round.
         /// </summary>
         public long PlayerOneId { get; set; }
         /// <summary>
-        /// The player object of the first player playing in this round.
+        /// The player data transfer object of the first player playing in this round.
         /// </summary>
-        public Player PlayerOne { get; set; }
+        public PlayerWithStatsDTO PlayerOne { get; set; }
         /// <summary>
         /// The unique id of the second player playing in this round.
         /// </summary>
         public long PlayerTwoId { get; set; }
         /// <summary>
-        /// The player object of the second player playing in this round.
+        /// The player data transfer object of the second player playing in this round.
         /// </summary>
-        public Player PlayerTwo { get; set; }
+        public PlayerWithStatsDTO PlayerTwo { get; set; }
         /// <summary>
         /// The unique id of the third player playing in this round.
         /// </summary>
         public long PlayerThreeId { get; set; }
         /// <summary>
-        /// The player object of the third player playing in this round.
+        /// The player data transfer object of the third player playing in this round.
         /// </summary>
-        public Player PlayerThree { get; set; }
+        public PlayerWithStatsDTO PlayerThree { get; set; }
         /// <summary>
         /// The unique id of the fourth player playing in this round.
         /// </summary>
         public long PlayerFourId { get; set; }
         /// <summary>
-        /// The player object of the fourth player playing in this round.
+        /// The player data transfer object of the fourth player playing in this round.
         /// </summary>
-        public Player PlayerFour { get; set; }
+        public PlayerWithStatsDTO PlayerFour { get; set; }
         /// <summary>
         /// A collection of all the Tichu or Grand Tichu calls made in this round.
         /// </summary>
-        public virtual ICollection<Call> Calls { get; set; }
+        public IList<CallDTO> Calls { get; set; }
         /// <summary>
         /// The points the first team won in this round.
         /// </summary>
@@ -105,6 +101,5 @@ namespace TichuSensei.Core.Domain.Entities
         /// The total number of bombs the second team had in its possesion in this round.
         /// </summary>
         public long BombsTeamTwo { get; set; }
-
     }
 }

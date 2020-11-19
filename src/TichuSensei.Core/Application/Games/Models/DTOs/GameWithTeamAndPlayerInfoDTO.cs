@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using TichuSensei.Core.Application.Players.Models.DTOs;
+using TichuSensei.Core.Application.Rounds.Models.DTOs;
 using TichuSensei.Core.Application.Shared.Mappings;
 using TichuSensei.Core.Application.Teams.Models.DTOs;
 using TichuSensei.Core.Domain.Entities;
@@ -72,6 +74,5 @@ namespace TichuSensei.Core.Application.Games.Models.DTOs
         /// </summary>
         public PlayerDTO PlayerFour { get; set; }
 
-        public GameStatsDTO GameStatsDTO { get; set; }
     }
 }

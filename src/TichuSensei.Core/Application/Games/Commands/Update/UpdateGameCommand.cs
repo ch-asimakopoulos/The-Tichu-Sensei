@@ -20,6 +20,11 @@ namespace TichuSensei.Core.Application.Games.Commands.Update
         /// The unique Id of the Tichu Sensei Game who will be updated.
         /// </summary>
         public long Id { get; set; }
+
+        /// <summary>
+        /// The Tichu Sensei application user's unique Id that is matched with this particular game update.      
+        /// </summary>
+        public string UserId { get; set; }
         /// <summary>
         /// Mercy Rule setting for this game. Mercy rule states that a game will end if the difference of the teams score exceeds 1000 at any time.
         /// </summary>
@@ -79,7 +84,8 @@ namespace TichuSensei.Core.Application.Games.Commands.Update
                 PlayerThreeId = request.PlayerThreeId ?? gm.PlayerThreeId,
                 PlayerFourId = request.PlayerFourId ?? gm.PlayerFourId,
                 TeamOneId = request.TeamOneId ?? gm.TeamOneId,
-                TeamTwoId = request.TeamTwoId ?? gm.TeamTwoId
+                TeamTwoId = request.TeamTwoId ?? gm.TeamTwoId,
+                LastModifiedBy = request.UserId
             };
             await _context.SaveChangesAsync(cancellationToken);
             return _mapper.Map<GameDTO>(gm);

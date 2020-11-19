@@ -12,6 +12,17 @@ namespace TichuSensei.Core.Domain.Entities
         /// The unique id. 
         /// </summary>
         public long Id { get; set; }
+
+        /// <summary>
+        /// The current team one score for this game.
+        /// </summary>
+        public int ScoreTeamOne { get; set; }
+
+        /// <summary>
+        /// The current team two score for this game.
+        /// </summary>
+        public int ScoreTeamTwo { get; set; }
+
         /// <summary>
         /// The total rounds of this game. 
         /// </summary>

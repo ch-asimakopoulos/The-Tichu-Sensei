@@ -1,4 +1,5 @@
 ﻿using TichuSensei.Core.Domain.Entities;
+using TichuSensei.Core.Domain.Enums.Game;
 
 namespace TichuSensei.Core.Domain.Policies
 {
@@ -46,6 +47,18 @@ namespace TichuSensei.Core.Domain.Policies
             /// <param name="team">The team whose eligibility will be checked.</param>
             /// <returns>A boolean value determining if the team is eligible or not.</returns>
             public static bool IsEloRankingEligible(Team team) => team.Stats.GamesTotal >= Kernel.Consts.Elo.MinGamesForEligibility;
+
+            /// <summary>
+            /// Calculates the Elo changes per team using the Elo formula: <seealso cref="https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details"/>, <seealso cref="https://en.wikipedia.org/wiki/Go_ranks_and_ratings#Elo_ratings_as_used_in_Go"/>
+            /// </summary>
+            /// <param name="team1">First team of the game.</param>
+            /// <param name="team2">Second team of the game.</param>
+            /// <param name="winningTeam">Enum that denotes the winning team.</param>
+            /// <returns>The change that will happen for each team's Elo rankings (upwards or downwards depending on if the team won or lost).</returns>
+            public static int CalculateEloChange(Team team1, Team team2, WinningTeam winningTeam)
+            {
+                return 0;
+            }
 
             /// <summary>
             /// Conforms an Elo change for a team to the minimum and maximum changes allowed.

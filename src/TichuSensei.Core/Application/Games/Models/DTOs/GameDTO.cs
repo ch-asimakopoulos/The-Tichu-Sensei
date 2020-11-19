@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using TichuSensei.Core.Application.Players.Models.DTOs;
+using TichuSensei.Core.Application.Rounds.Models.DTOs;
 using TichuSensei.Core.Application.Shared.Mappings;
 using TichuSensei.Core.Domain.Entities;
 
@@ -46,5 +48,6 @@ namespace TichuSensei.Core.Application.Games.Models.DTOs
         /// The unique id of the fourth player playing in this game.
         /// </summary>
         public long PlayerFourId { get; set; }
+
     }
 }

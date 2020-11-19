@@ -369,6 +369,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                     created_by = table.Column<string>(nullable: true),
                     date_last_modified = table.Column<DateTime>(nullable: true),
                     last_modified_by = table.Column<string>(nullable: true),
+                    score_team_one = table.Column<int>(nullable: false),
+                    score_team_two = table.Column<int>(nullable: false),
                     rounds_total = table.Column<long>(nullable: false),
                     rounds_won_team_one = table.Column<long>(nullable: false),
                     rounds_won_team_two = table.Column<long>(nullable: false),
@@ -405,6 +407,7 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     date_created = table.Column<DateTime>(nullable: false),
                     date_ended = table.Column<DateTime>(nullable: true),
+                    game_id = table.Column<long>(nullable: false),
                     team_one_id = table.Column<long>(nullable: false),
                     team_two_id = table.Column<long>(nullable: false),
                     player_one_id = table.Column<long>(nullable: false),
@@ -422,6 +425,12 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_rounds", x => x.round_id);
+                    table.ForeignKey(
+                        name: "fk_rounds_games_game_id",
+                        column: x => x.game_id,
+                        principalTable: "games",
+                        principalColumn: "game_id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_rounds_game_stats_game_stats_id",
                         column: x => x.game_stats_id,
@@ -545,7 +554,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "ix_game_stats_game_id",
                 table: "game_stats",
-                column: "game_id");
+                column: "game_id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_games_player_four_id",
@@ -592,6 +602,11 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                 table: "player_stats",
                 column: "player_id",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "ix_rounds_game_id",
+                table: "rounds",
+                column: "game_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_rounds_game_stats_id",

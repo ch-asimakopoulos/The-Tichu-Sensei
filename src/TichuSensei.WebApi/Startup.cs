@@ -1,10 +1,13 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using TichuSensei.Core.Application;
 using TichuSensei.Core.Application.Shared.Interfaces;
 using TichuSensei.Infrastructure;
@@ -35,6 +38,31 @@ namespace TichuSensei.WebApi
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
 
+            services.AddApiVersioning(cfg =>
+            {
+                cfg.DefaultApiVersion = new ApiVersion(1, 0);
+                cfg.AssumeDefaultVersionWhenUnspecified = true;
+                cfg.ReportApiVersions = true;
+                cfg.ApiVersionReader = new HeaderApiVersionReader("api-version");
+            });
+
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1.0",
+                        new Microsoft.OpenApi.Models.OpenApiInfo()
+                        {
+                            Title = "Tichu Sensei API",
+                            Version = "v1.0",
+                            Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                            {
+                                Email = "tichu.sensei@gmail.com",
+                                Name = "Charalampos Asimakopoulos",
+                                Url = new System.Uri("https://github.com/ch-asimakopoulos/The-Tichu-Sensei")
+                            }
+                        });
+                    //c.IncludeXmlComments
+                }); 
+
             services.AddControllersWithViews(options =>
                     options.Filters.Add(new ApiExceptionFilterAttribute()))
                     .AddFluentValidation();
@@ -50,6 +78,18 @@ namespace TichuSensei.WebApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tichu Sensei API v1.0");
+            });
 
             app.UseRouting();
 

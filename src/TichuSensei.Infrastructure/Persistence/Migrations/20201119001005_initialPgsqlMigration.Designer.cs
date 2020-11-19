@@ -10,7 +10,7 @@ using TichuSensei.Infrastructure.Persistence;
 namespace TichuSensei.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201012061718_initialPgsqlMigration")]
+    [Migration("20201119001005_initialPgsqlMigration")]
     partial class initialPgsqlMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -478,6 +478,14 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("rounds_won_team_two")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("ScoreTeamOne")
+                        .HasColumnName("score_team_one")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ScoreTeamTwo")
+                        .HasColumnName("score_team_two")
+                        .HasColumnType("integer");
+
                     b.Property<long>("TichuCallsTotalTeamOne")
                         .HasColumnName("tichu_calls_total_team_one")
                         .HasColumnType("bigint");
@@ -498,6 +506,7 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasName("pk_game_stats");
 
                     b.HasIndex("GameId")
+                        .IsUnique()
                         .HasName("ix_game_stats_game_id");
 
                     b.ToTable("game_stats");
@@ -639,6 +648,10 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
                         .HasColumnName("date_ended")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<long>("GameId")
+                        .HasColumnName("game_id")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("GameStatsId")
                         .HasColumnName("game_stats_id")
                         .HasColumnType("bigint");
@@ -685,6 +698,9 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
                     b.HasKey("RoundId")
                         .HasName("pk_rounds");
+
+                    b.HasIndex("GameId")
+                        .HasName("ix_rounds_game_id");
 
                     b.HasIndex("GameStatsId")
                         .HasName("ix_rounds_game_stats_id");
@@ -1023,8 +1039,8 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.GameStats", b =>
                 {
                     b.HasOne("TichuSensei.Core.Domain.Entities.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
+                        .WithOne("Stats")
+                        .HasForeignKey("TichuSensei.Core.Domain.Entities.GameStats", "GameId")
                         .HasConstraintName("fk_game_stats_games_game_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1042,6 +1058,13 @@ namespace TichuSensei.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("TichuSensei.Core.Domain.Entities.Round", b =>
                 {
+                    b.HasOne("TichuSensei.Core.Domain.Entities.Game", "Game")
+                        .WithMany("Rounds")
+                        .HasForeignKey("GameId")
+                        .HasConstraintName("fk_rounds_games_game_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TichuSensei.Core.Domain.Entities.GameStats", null)
                         .WithMany("Rounds")
                         .HasForeignKey("GameStatsId")
