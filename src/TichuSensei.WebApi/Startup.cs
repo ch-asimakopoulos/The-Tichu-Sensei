@@ -89,6 +89,7 @@ namespace TichuSensei.WebApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tichu Sensei API v1.0");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseRouting();
