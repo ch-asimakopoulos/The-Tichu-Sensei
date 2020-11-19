@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using TichuSensei.Core.Application.Shared.Interfaces;
 using TichuSensei.Core.Application.Shared.Models;
@@ -44,6 +46,21 @@ namespace TichuSensei.Infrastructure.Identity
             IdentityResult result = await _userManager.DeleteAsync(user);
 
             return result.ToApplicationResult();
+        }
+
+        public async Task<(Result, string)> GetJWTToken(string userName, string password)
+        {
+            ApplicationUser user = _userManager.Users.SingleOrDefault(u => u.UserName == userName);
+            bool isAuthenticated = await _userManager.CheckPasswordAsync(user, password);
+            if(isAuthenticated)
+            {
+                return (Result.Success(), "asa");
+                    
+            }
+
+            return (Result.Success(), string.Empty);
+
+
         }
     }
 }

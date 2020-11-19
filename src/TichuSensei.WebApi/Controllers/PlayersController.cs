@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,29 @@ namespace TichuSensei.WebApi.Controllers
     [ApiController]
     [Authorize]
     public class PlayersController : ControllerBase
-    {
-        private IMediator Mediator;
+    { 
+
+        public PlayersController(IMediator mediator, ILogger<PlayersController> logger)
+            {
+                _mediator = mediator;
+                _logger = logger;
+            }
+        private readonly IMediator _mediator;
+
+        private readonly ILogger<PlayersController> _logger;
+
         // GET: api/players
         [HttpGet]
         public async Task<ActionResult<PaginatedList<PlayerDTO>>> Get(GetPlayersWithPaginationQuery query)
         {
-            return Ok(await Mediator.Send(query));
+            return !ModelState.IsValid ? BadRequest() : Ok(await _mediator.Send(query));
         }
 
         // GET api/players/5
-        [HttpGet("{id:int}", Name = "GetPlayer")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<PlayerDTO>> Get(int id)
         {
-           return Ok(await  Mediator.Send(new GetPlayerQuery() { id = id }));
+           return Ok(await _mediator.Send(new GetPlayerQuery() { id = id }));
             
         }
 
@@ -42,34 +52,33 @@ namespace TichuSensei.WebApi.Controllers
         [HttpGet("Stats")]
         public async Task<ActionResult<PaginatedList<PlayerWithStatsDTO>>> GetPlayersWithStats(GetPlayersWithStatsWithPaginationQuery query)
         {
-            return Ok(await Mediator.Send(query));
+            return !ModelState.IsValid ? BadRequest() : Ok(await _mediator.Send(query));
         }
 
         // GET api/players/stats/5
         [HttpGet("Stats/{id:int}")]
         public async Task<ActionResult<PlayerWithStatsDTO>> GetPlayersWithStats(int id)
         {
-            return Ok(await Mediator.Send(new GetPlayerWithStatsQuery() { id = id }));
+            return Ok(await _mediator.Send(new GetPlayerWithStatsQuery() { id = id }));
 
         }
 
         // POST api/players
         [HttpPost]
-        public async Task<ActionResult<PlayerDTO>> Post(CreatePlayerCommand command)
+        public async Task<ActionResult> Post([FromBody] CreatePlayerCommand command)
         {
-            return CreatedAtRoute("GetPlayer", await Mediator.Send(command));
+            if (!ModelState.IsValid) return BadRequest();
+            PlayerDTO player = await _mediator.Send(command);
+            return CreatedAtRoute("Get", new { id = player.PlayerId }, player);
         }
 
         // PUT api/players/5
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int id, UpdatePlayerCommand command)
+        public async Task<ActionResult> Put(int id, [FromBody] UpdatePlayerCommand command)
         {
-            if(id != command.Id)
-            {
-                return BadRequest();
-            }
+            if(!ModelState.IsValid || id != command.Id ) return BadRequest();
 
-            await Mediator.Send(command);
+            await _mediator.Send(command);
 
             return NoContent();
         }
@@ -78,7 +87,7 @@ namespace TichuSensei.WebApi.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            await Mediator.Send(new DeletePlayerCommand { Id = id });
+            await _mediator.Send(new DeletePlayerCommand { Id = id });
 
             return NoContent();
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,14 +30,16 @@ namespace TichuSensei.Infrastructure
                      .AddDefaultIdentity<ApplicationUser>()
                      .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddIdentityServerJwt();
+
             services.AddIdentityServer()
                     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
             services.AddTransient<IDateTime, DateTimeService>()
                     .AddTransient<IIdentityService, IdentityService>();
 
-            services.AddAuthentication()
-                    .AddIdentityServerJwt();
 
             return services;
         }

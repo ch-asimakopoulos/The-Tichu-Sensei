@@ -48,7 +48,7 @@ namespace TichuSensei.WebApi
 
             services.AddSwaggerGen(c =>
                 {
-                    c.SwaggerDoc("v1.0",
+                    c.SwaggerDoc("v1",
                         new Microsoft.OpenApi.Models.OpenApiInfo()
                         {
                             Title = "Tichu Sensei API",
@@ -60,6 +60,9 @@ namespace TichuSensei.WebApi
                                 Url = new System.Uri("https://github.com/ch-asimakopoulos/The-Tichu-Sensei")
                             }
                         });
+
+                    c.CustomSchemaIds(type => type.Name.EndsWith("DTO") ? type.Name.Replace("DTO", string.Empty) : type.Name);
+
                     //c.IncludeXmlComments
                 }); 
 
@@ -80,7 +83,7 @@ namespace TichuSensei.WebApi
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
-
+            
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -88,8 +91,8 @@ namespace TichuSensei.WebApi
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tichu Sensei API v1.0");
                 c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "Tichu Sensei API v1.0");
             });
 
             app.UseRouting();
